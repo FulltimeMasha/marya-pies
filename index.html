@@ -408,7 +408,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
   var img = document.querySelector('.hero-logo');
   var wrap = document.querySelector('.hero-logo-wrap');
   if(!img || !wrap) return;
-  var still = 'assets/girl-2.png', anim = 'assets/girl-bite.webp', busy = false;
+  var still = 'assets/girl-2.png', busy = false;
+  var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  var anim = isSafari ? 'assets/girl-bite-apng.png' : 'assets/girl-bite.webp';
   var pre = new Image(); pre.src = anim;
   function bite(){
     if(busy) return; busy = true;
