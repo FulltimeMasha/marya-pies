@@ -11,7 +11,7 @@
 <style>
 @font-face{
   font-family:"Monomakh";
-  src:url("fonts/Monomakh-Regular.woff2") format("woff2"), url("fonts/Monomakh-Regular.ttf") format("truetype") format("truetype");
+  src:url("fonts/Monomakh-Regular.woff2") format("woff2"), url("fonts/Monomakh-Regular.ttf") format("truetype");
   font-weight:400;
   font-style:normal;
   font-display:swap;
@@ -232,24 +232,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
 .footer-info span{color:#E8C4B2}
 .footer-bottom{border-top:1px solid rgba(240,203,129,.2); padding:16px 0 22px; display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:space-between; font-size:13px; color:#C99A8A}
 </style>
-<script>
-/* Load the real Monomakh from the bundled TTF bytes and register it with the
-   Font Loading API, so the brand font applies even where the plain CSS
-   @font-face source does not survive page delivery. */
-(function(){
-  try{
-    if(!window.fetch || !window.FontFace || !document.fonts || !document.fonts.add) return;
-    fetch("fonts/Monomakh-Regular.ttf")
-      .then(function(r){ if(!r.ok) throw new Error("font fetch failed"); return r.arrayBuffer(); })
-      .then(function(buf){
-        var face = new FontFace("Monomakh", buf, {weight:"400", style:"normal"});
-        return face.load();
-      })
-      .then(function(loaded){ document.fonts.add(loaded); })
-      .catch(function(){});
-  }catch(e){}
-})();
-</script>
+
 </head>
 <body>
 
