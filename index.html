@@ -173,7 +173,7 @@ a{color:inherit}
   background:var(--cream-2); border:1px solid var(--line); border-radius:24px; overflow:hidden;
   box-shadow:var(--shadow-card); display:flex; flex-direction:column;
 }
-.card-photo{aspect-ratio:4/3; overflow:hidden; background:#EAD9C8}
+.card-photo{position:relative; aspect-ratio:4/3; overflow:hidden; background:#EAD9C8}
 .card-photo img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
 .card:hover .card-photo img{transform:scale(1.04)}
 @media(prefers-reduced-motion:reduce){ .card:hover .card-photo img{transform:none} }
@@ -197,6 +197,14 @@ a{color:inherit}
 .pie-btn.active small{color:#A41231}
 .card[hidden]{display:none}
 .group-head[hidden]{display:none}
+
+.badge{position:absolute; top:12px; left:12px; z-index:2; padding:6px 11px; border-radius:999px; font-size:11.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#FFF7EA; box-shadow:0 3px 10px rgba(60,10,16,.28)}
+.badge.spicy{background:#A41231}
+.badge.veg{background:#4C7A3F}
+.badge.sea{background:#2E5E6B}
+.badge.set{background:#F0CB81; color:#631218}
+.price{display:flex; flex-direction:column; gap:2px; text-align:right; font-size:14.5px; font-weight:700; color:var(--ink-soft); white-space:nowrap}
+.price b{font-size:19px; color:var(--cranberry)}
 .group-head{font-family:"Monomakh",serif; font-weight:400; font-size:30px; color:var(--cherry); margin:28px 0 14px}
 .pies-footnote{margin:18px 2px 0; font-size:13.5px; color:var(--ink-soft); text-align:center}
 
@@ -309,11 +317,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Hansel</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Chicken breast, ham and mushrooms in a creamy sauce with melted cheese.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -323,11 +331,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Gretel</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Chicken and mushrooms, golden and simple — the cozy classic.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -337,95 +345,95 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Leprechaun</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Beef and potato with onion, quince and parsley. A Sunday dinner in a crust.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
-          <div class="card-photo"><img src="assets/pie-mermaid.jpg" alt="Mermaid — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-mermaid.jpg" alt="Mermaid — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Mermaid</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Salmon and spinach quiche with cream and cheese.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
-          <div class="card-photo"><img src="assets/pie-triton.jpg" alt="Triton — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-triton.jpg" alt="Triton — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Triton</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Shrimp, mussels and squid with cherry tomatoes, olives and cheese.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
-          <div class="card-photo"><img src="assets/pie-dragon.jpg" alt="Dragon — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge spicy">🌶 Spicy</span><img src="assets/pie-dragon.jpg" alt="Dragon — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Dragon</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Spicy beef with sweet peppers, corn and cheese. It has a kick.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
-          <div class="card-photo"><img src="assets/pie-pixie.jpg" alt="Pixie — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-pixie.jpg" alt="Pixie — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Pixie</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Broccoli, spinach and brined cheese. No meat, all flavour.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
-          <div class="card-photo"><img src="assets/pie-miller.jpg" alt="Miller — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-miller.jpg" alt="Miller — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Miller</h3>
-              <div class="price">$42<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$25</b></span><span class="pr">2 lb <b>$42</b></span></div>
             </div>
             <p>Three cheeses and tomato with cream — mozzarella, parmesan and a golden top.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $25</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
-          <div class="card-photo"><img src="assets/pie-hearth.jpg" alt="Hearth — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge set">Set only</span><img src="assets/pie-hearth.jpg" alt="Hearth — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Hearth</h3>
-              <div class="price">$7<small>tartlet</small></div>
+              <div class="price"><span class="pr">only in <b>Nine Feasts</b></span></div>
             </div>
             <p>Moravian chicken in rich gravy under a double crust — our North Carolina neighbour.</p>
             <div class="card-foot">
-              <span class="card-note">Tartlet only</span>
+              <span class="card-note">Box of 9 — $54</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -438,11 +446,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Briarose</h3>
-              <div class="price">$38<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$22</b></span><span class="pr">2 lb <b>$38</b></span></div>
             </div>
             <p>Pear and blue cheese over soft vanilla custard.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $22</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -452,11 +460,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Brownie</h3>
-              <div class="price">$38<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$22</b></span><span class="pr">2 lb <b>$38</b></span></div>
             </div>
             <p>Dark chocolate with lingonberry — rich, glossy, barely sweet.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $22</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -466,11 +474,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Bluebell</h3>
-              <div class="price">$38<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$22</b></span><span class="pr">2 lb <b>$38</b></span></div>
             </div>
             <p>Blueberry with curd cheese and sour cream.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $22</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -480,11 +488,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Andersen</h3>
-              <div class="price">$38<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$22</b></span><span class="pr">2 lb <b>$38</b></span></div>
             </div>
             <p>Sour cherry under a golden lattice crust.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $22</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -494,11 +502,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Goldilocks</h3>
-              <div class="price">$38<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$22</b></span><span class="pr">2 lb <b>$38</b></span></div>
             </div>
             <p>Banana and caramel banoffee with whipped cream and chocolate.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $22</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -508,67 +516,67 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="card-body">
             <div class="card-top">
               <h3>Moonberry</h3>
-              <div class="price">$38<small>2 lb</small></div>
+              <div class="price"><span class="pr">1 lb <b>$22</b></span><span class="pr">2 lb <b>$38</b></span></div>
             </div>
             <p>Blackcurrant with curd — properly tart, deep purple.</p>
             <div class="card-foot">
-              <span class="card-note">1 lb — $22</span>
+              <span class="card-note">Serves 3–4 / 6–8</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
-          <div class="card-photo"><img src="assets/pie-cinderella.jpg" alt="Cinderella — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge set">Set only</span><img src="assets/pie-cinderella.jpg" alt="Cinderella — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Cinderella</h3>
-              <div class="price">$7<small>tartlet</small></div>
+              <div class="price"><span class="pr">only in <b>Nine Tales</b></span></div>
             </div>
             <p>Baked pumpkin and apricot — golden, soft and honeyed.</p>
             <div class="card-foot">
-              <span class="card-note">Tartlet only</span>
+              <span class="card-note">Box of 9 — $54</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
-          <div class="card-photo"><img src="assets/pie-dorothy.jpg" alt="Dorothy — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge set">Set only</span><img src="assets/pie-dorothy.jpg" alt="Dorothy — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Dorothy</h3>
-              <div class="price">$7<small>tartlet</small></div>
+              <div class="price"><span class="pr">only in <b>Nine Tales</b></span></div>
             </div>
             <p>Poppy seed and curd cheese — creamy and speckled.</p>
             <div class="card-foot">
-              <span class="card-note">Tartlet only</span>
+              <span class="card-note">Box of 9 — $54</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
-          <div class="card-photo"><img src="assets/pie-redhood.jpg" alt="Redhood — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge set">Set only</span><img src="assets/pie-redhood.jpg" alt="Redhood — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Redhood</h3>
-              <div class="price">$7<small>tartlet</small></div>
+              <div class="price"><span class="pr">only in <b>Nine Tales</b></span></div>
             </div>
             <p>Stewed apple and lingonberry under a golden crumble.</p>
             <div class="card-foot">
-              <span class="card-note">Tartlet only</span>
+              <span class="card-note">Box of 9 — $54</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
-          <div class="card-photo"><img src="assets/pie-snowwhite.jpg" alt="Snowwhite — Marya Pies" loading="lazy" /></div>
+          <div class="card-photo"><span class="badge set">Set only</span><img src="assets/pie-snowwhite.jpg" alt="Snowwhite — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
               <h3>Snowwhite</h3>
-              <div class="price">$7<small>tartlet</small></div>
+              <div class="price"><span class="pr">only in <b>Nine Tales</b></span></div>
             </div>
             <p>Apple, raisin and walnut with cinnamon — a little strudel in a crust.</p>
             <div class="card-foot">
-              <span class="card-note">Tartlet only</span>
+              <span class="card-note">Box of 9 — $54</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -585,7 +593,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
             <p>Nine little savory pies: Hansel, Gretel, Leprechaun, Mermaid, Triton, Dragon, Pixie, Miller — plus Hearth, Moravian chicken in gravy, our North Carolina neighbour.</p>
             <div class="card-foot">
-              <span class="card-note">Tartlets $7 each</span>
+              <span class="card-note">Not sold separately</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
@@ -599,13 +607,13 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
             <p>Nine little sweet pies: Briarose, Brownie, Bluebell, Andersen and Moonberry — plus Cinderella (pumpkin & apricot), Dorothy (poppy seed & curd), Redhood (apple & lingonberry crumble) and Snowwhite (apple strudel with raisin & walnut).</p>
             <div class="card-foot">
-              <span class="card-note">Tartlets $7 each</span>
+              <span class="card-note">Not sold separately</span>
               <a class="preorder-link" href="#preorder">Preorder →</a>
             </div>
           </div>
         </article>
       </div>
-      <p class="pies-footnote">Every whole pie comes in two sizes: 1 lb (serves 3–4) and 2 lb (serves 6–8). Tartlets are 4 in across — singly or in boxes of nine.</p>
+      <p class="pies-footnote">Every whole pie comes in two sizes: 1 lb (serves 3–4) and 2 lb (serves 6–8). Tartlets are 4 in across and come only in boxes of nine.</p>
     </div>
   </section>
 
