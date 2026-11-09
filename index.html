@@ -796,7 +796,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
   <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
   <form class="cart-form" id="cartForm">
     <input id="cfName" placeholder="Your name *" autocomplete="name" />
-    <input id="cfPhone" placeholder="Phone or Telegram *" autocomplete="tel" />
+    <input id="cfPhone" type="tel" placeholder="Phone number *" autocomplete="tel" />
     <input id="cfWhen" placeholder="When do you need it? (e.g. Saturday)" />
     <textarea id="cfNote" rows="2" placeholder="Anything we should know?"></textarea>
     <button class="btn btn-cranberry" type="submit" style="width:100%">Send order</button>
@@ -860,7 +860,8 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     var status=document.getElementById('cartStatus');
     var items=Object.keys(cart).map(function(k){ return cart[k]; });
     if(!items.length){ status.textContent='Your cart is empty.'; return; }
-    if(!name||!phone){ status.textContent='Please add your name and phone.'; return; }
+    if(!name){ status.textContent='Please add your name.'; return; }
+    if(phone.replace(/\D/g,'').length<7){ status.textContent='Please add a valid phone number — we will text you to confirm.'; return; }
     status.textContent='Sending…';
     fetch('/api/order', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
       name:name, phone:phone,
