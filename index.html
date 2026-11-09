@@ -200,11 +200,8 @@ a{color:inherit}
 .group-head[hidden]{display:none}
 
 
-.btn-pie{position:relative; background:var(--cranberry); color:#FFF7EA; padding:17px 42px; font-size:19px; letter-spacing:.05em; box-shadow:0 0 0 3px #B97F26, 0 14px 30px rgba(30,4,8,.35); margin:12px 8px}
-.btn-pie:hover{background:var(--cranberry-dark)}
-.btn-pie::before,.btn-pie::after{content:""; position:absolute; left:15px; right:15px; height:14px; background-image:radial-gradient(circle at 8px 8px, #F3C96B 6.5px, #B97F26 8.5px, transparent 9.5px); background-size:17px 14px; background-repeat:repeat-x; pointer-events:none}
-.btn-pie::before{top:-8px}
-.btn-pie::after{bottom:-8px; transform:scaleY(-1)}
+.btn-pie{display:inline-flex; align-items:center; justify-content:center; width:min(370px,88vw); aspect-ratio:1100/372; background-color:transparent; background-image:url('assets/btn-pie.png'); background-size:100% 100%; background-repeat:no-repeat; color:#FFF7EA; font-size:21px; letter-spacing:.03em; text-shadow:0 2px 10px rgba(60,5,12,.5); box-shadow:none; padding:0 13%; margin:16px 0 6px}
+.btn-pie:hover{background-color:transparent; filter:brightness(1.06)}
 
 .buy{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; flex-wrap:wrap}
 .sizes{display:flex; gap:6px}
@@ -313,7 +310,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
       </div>
       <p class="hero-lead">Fruit, vegetables, flour, butter &amp; a little bit of magic.</p>
       <div class="hero-ctas">
-        <a class="btn btn-pie" href="#pies">Discover</a>
+        <a class="btn btn-pie" href="#pies">Taste the fairy tale</a>
       </div>
     </div>
   </section>
