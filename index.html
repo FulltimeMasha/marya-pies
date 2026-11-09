@@ -205,6 +205,25 @@ a{color:inherit}
 .btn-pie::before,.btn-pie::after{content:""; position:absolute; left:15px; right:15px; height:14px; background-image:radial-gradient(circle at 8px 8px, #F3C96B 6.5px, #B97F26 8.5px, transparent 9.5px); background-size:17px 14px; background-repeat:repeat-x; pointer-events:none}
 .btn-pie::before{top:-8px}
 .btn-pie::after{bottom:-8px; transform:scaleY(-1)}
+
+.buy{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; flex-wrap:wrap}
+.sizes{display:flex; gap:6px}
+.sz{border:2px solid #D9B98A; background:transparent; color:var(--ink-soft); border-radius:999px; padding:6px 12px; font-size:13.5px; font-weight:700; cursor:pointer}
+.sz.active{background:#F0CB81; border-color:#B97F26; color:#631218}
+#cartFab{position:fixed; right:16px; bottom:16px; z-index:60; background:var(--cranberry); color:#FFF7EA; border:none; border-radius:999px; padding:14px 20px; font-size:16px; font-weight:800; box-shadow:0 10px 26px rgba(60,10,16,.35); cursor:pointer; display:none}
+#cartFab.show{display:block}
+#cartOverlay{position:fixed; inset:0; background:rgba(38,5,10,.5); z-index:70; display:none}
+#cartOverlay.open{display:block}
+#cartDrawer{position:fixed; top:0; right:0; height:100dvh; width:min(420px,94vw); background:#FFFBF2; z-index:71; transform:translateX(105%); transition:transform .25s ease; padding:20px; overflow-y:auto; box-shadow:-12px 0 32px rgba(60,10,16,.25)}
+#cartDrawer.open{transform:none}
+#cartDrawer h3{margin:0 0 4px; color:var(--cherry)}
+.cart-item{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:9px 0; border-bottom:1px dashed #E3CDA8}
+.cart-item .qty{display:flex; gap:6px; align-items:center}
+.qty button{width:26px; height:26px; border-radius:50%; border:2px solid #D9B98A; background:#fff; font-weight:800; cursor:pointer}
+.cart-total{display:flex; justify-content:space-between; font-weight:800; font-size:18px; margin:14px 0; color:var(--cherry)}
+.cart-form input,.cart-form textarea{width:100%; padding:11px 12px; border:2px solid #E3CDA8; border-radius:12px; margin-bottom:10px; font-size:16px; background:#fff; box-sizing:border-box}
+.cart-note{font-size:13px; color:var(--ink-soft)}
+#cartStatus{margin-top:10px; font-weight:700}
 .badge{position:absolute; top:12px; left:12px; z-index:2; padding:6px 11px; border-radius:999px; font-size:11.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#FFF7EA; box-shadow:0 3px 10px rgba(60,10,16,.28)}
 .badge.spicy{background:#A41231}
 .badge.veg{background:#4C7A3F}
@@ -330,8 +349,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Chicken breast, ham and mushrooms in a creamy sauce with melted cheese.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Hansel" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -344,8 +364,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Chicken and mushrooms, golden and simple — the cozy classic.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Gretel" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -358,8 +379,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Beef and potato with onion, quince and parsley. A Sunday dinner in a crust.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Leprechaun" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -372,8 +394,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Salmon and spinach quiche with cream and cheese.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Mermaid" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -386,8 +409,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Shrimp, mussels and squid with cherry tomatoes, olives and cheese.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Triton" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -400,8 +424,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Spicy beef with sweet peppers, corn and cheese. It has a kick.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Dragon" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -414,8 +439,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Broccoli, spinach and brined cheese. No meat, all flavour.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Pixie" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -428,8 +454,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Three cheeses and tomato with cream — mozzarella, parmesan and a golden top.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="25">1 lb · $25</button><button class="sz" data-size="2 lb" data-price="42">2 lb · $42</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Miller" data-size="1 lb" data-price="25">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="quiche">
@@ -442,7 +469,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Moravian chicken in rich gravy under a double crust — our North Carolina neighbour.</p>
             <div class="card-foot">
               <span class="card-note">Box of 9 — $54</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <a class="btn btn-butter btn-small" href="#set-nine-feasts">Get the set →</a>
             </div>
           </div>
         </article>
@@ -459,8 +486,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Pear and blue cheese over soft vanilla custard.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="22">1 lb · $22</button><button class="sz" data-size="2 lb" data-price="38">2 lb · $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Briarose" data-size="1 lb" data-price="22">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
@@ -473,8 +501,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Dark chocolate with lingonberry — rich, glossy, barely sweet.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="22">1 lb · $22</button><button class="sz" data-size="2 lb" data-price="38">2 lb · $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Brownie" data-size="1 lb" data-price="22">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
@@ -487,8 +516,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Blueberry with curd cheese and sour cream.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="22">1 lb · $22</button><button class="sz" data-size="2 lb" data-price="38">2 lb · $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Bluebell" data-size="1 lb" data-price="22">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
@@ -501,8 +531,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Sour cherry under a golden lattice crust.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="22">1 lb · $22</button><button class="sz" data-size="2 lb" data-price="38">2 lb · $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Andersen" data-size="1 lb" data-price="22">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
@@ -515,8 +546,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Banana and caramel banoffee with whipped cream and chocolate.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="22">1 lb · $22</button><button class="sz" data-size="2 lb" data-price="38">2 lb · $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Goldilocks" data-size="1 lb" data-price="22">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
@@ -529,8 +561,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Blackcurrant with curd — properly tart, deep purple.</p>
             <div class="card-foot">
               <span class="card-note">Serves 3–4 / 6–8</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              
             </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="1 lb" data-price="22">1 lb · $22</button><button class="sz" data-size="2 lb" data-price="38">2 lb · $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Moonberry" data-size="1 lb" data-price="22">Add to cart</button></div>
           </div>
         </article>
         <article class="card" data-cat="sweet">
@@ -543,7 +576,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Baked pumpkin and apricot — golden, soft and honeyed.</p>
             <div class="card-foot">
               <span class="card-note">Box of 9 — $54</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <a class="btn btn-butter btn-small" href="#set-nine-tales">Get the set →</a>
             </div>
           </div>
         </article>
@@ -557,7 +590,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Poppy seed and curd cheese — creamy and speckled.</p>
             <div class="card-foot">
               <span class="card-note">Box of 9 — $54</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <a class="btn btn-butter btn-small" href="#set-nine-tales">Get the set →</a>
             </div>
           </div>
         </article>
@@ -571,7 +604,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Stewed apple and lingonberry under a golden crumble.</p>
             <div class="card-foot">
               <span class="card-note">Box of 9 — $54</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <a class="btn btn-butter btn-small" href="#set-nine-tales">Get the set →</a>
             </div>
           </div>
         </article>
@@ -585,14 +618,14 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Apple, raisin and walnut with cinnamon — a little strudel in a crust.</p>
             <div class="card-foot">
               <span class="card-note">Box of 9 — $54</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <a class="btn btn-butter btn-small" href="#set-nine-tales">Get the set →</a>
             </div>
           </div>
         </article>
         </div>
       <h3 class="group-head">Sets</h3>
       <div class="cards">
-        <article class="card" data-cat="sets">
+        <article class="card" id="set-nine-feasts" data-cat="sets">
           <div class="card-photo"><img src="assets/pie-savory-box.jpg" alt="Nine Feasts — savory tartlet set, Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -602,11 +635,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Nine little savory pies: Hansel, Gretel, Leprechaun, Mermaid, Triton, Dragon, Pixie, Miller — plus Hearth, Moravian chicken in gravy, our North Carolina neighbour.</p>
             <div class="card-foot">
               <span class="card-note">Not sold separately</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <button class="btn btn-butter btn-small add-btn" data-name="Nine Feasts" data-size="Box of 9" data-price="54">Add to cart · $54</button>
             </div>
           </div>
         </article>
-        <article class="card" data-cat="sets">
+        <article class="card" id="set-nine-tales" data-cat="sets">
           <div class="card-photo"><img src="assets/pie-sweet-box.jpg" alt="Nine Tales — sweet tartlet set, Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -616,7 +649,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             <p>Nine little sweet pies: Briarose, Brownie, Bluebell, Andersen and Moonberry — plus Cinderella (pumpkin & apricot), Dorothy (poppy seed & curd), Redhood (apple & lingonberry crumble) and Snowwhite (apple strudel with raisin & walnut).</p>
             <div class="card-foot">
               <span class="card-note">Not sold separately</span>
-              <a class="btn btn-butter btn-small" href="#preorder">Preorder</a>
+              <button class="btn btn-butter btn-small add-btn" data-name="Nine Tales" data-size="Box of 9" data-price="54">Add to cart · $54</button>
             </div>
           </div>
         </article>
@@ -754,5 +787,97 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
       });
     })();
   </script>
+
+<button id="cartFab" aria-label="Open cart">🧺 Cart · <span id="cartFabTotal">$0</span></button>
+<div id="cartOverlay"></div>
+<aside id="cartDrawer" aria-label="Your order">
+  <div style="display:flex; justify-content:space-between; align-items:center">
+    <h3>Your order</h3>
+    <button id="cartClose" style="border:none; background:none; font-size:24px; cursor:pointer" aria-label="Close">×</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+  <form class="cart-form" id="cartForm">
+    <input id="cfName" placeholder="Your name *" autocomplete="name" />
+    <input id="cfPhone" placeholder="Phone or Telegram *" autocomplete="tel" />
+    <input id="cfWhen" placeholder="When do you need it? (e.g. Saturday)" />
+    <textarea id="cfNote" rows="2" placeholder="Anything we should know?"></textarea>
+    <button class="btn btn-cranberry" type="submit" style="width:100%">Send order</button>
+    <p class="cart-note">We will text you back to confirm and share payment details. Pickup at the market, preorders close Friday evening.</p>
+    <div id="cartStatus"></div>
+  </form>
+</aside>
+
+<script>
+(function(){
+  var cart={};
+  try{ cart=JSON.parse(localStorage.getItem('mp_cart')||'{}'); }catch(e){ cart={}; }
+  var fab=document.getElementById('cartFab'), drawer=document.getElementById('cartDrawer'), overlay=document.getElementById('cartOverlay');
+  function save(){ localStorage.setItem('mp_cart', JSON.stringify(cart)); }
+  function totals(){ var n=0,t=0; for(var k in cart){ n+=cart[k].qty; t+=cart[k].qty*cart[k].price; } return {n:n,t:t}; }
+  function render(){
+    var box=document.getElementById('cartItems'); box.innerHTML='';
+    var keys=Object.keys(cart);
+    if(!keys.length){ box.innerHTML='<p class="cart-note">Your cart is empty — add a pie you like.</p>'; }
+    keys.forEach(function(k){ var it=cart[k];
+      var row=document.createElement('div'); row.className='cart-item';
+      row.innerHTML='<div><b></b><br><small></small></div>';
+      row.querySelector('b').textContent=it.name;
+      row.querySelector('small').textContent=it.size+' · $'+it.price;
+      var q=document.createElement('div'); q.className='qty';
+      q.innerHTML='<button aria-label="minus">−</button><span>'+it.qty+'</span><button aria-label="plus">+</button>';
+      q.children[0].onclick=function(){ it.qty--; if(it.qty<=0) delete cart[k]; save(); render(); };
+      q.children[2].onclick=function(){ it.qty++; save(); render(); };
+      row.appendChild(q); box.appendChild(row);
+    });
+    var tt=totals();
+    document.getElementById('cartTotal').textContent='$'+tt.t;
+    document.getElementById('cartFabTotal').textContent='$'+tt.t;
+    fab.classList.toggle('show', tt.n>0);
+  }
+  document.querySelectorAll('.card').forEach(function(card){
+    var add=card.querySelector('.add-btn'); if(!add) return;
+    card.querySelectorAll('.sz').forEach(function(sz){
+      sz.addEventListener('click', function(){
+        card.querySelectorAll('.sz').forEach(function(x){ x.classList.remove('active'); });
+        sz.classList.add('active');
+        add.dataset.size=sz.dataset.size; add.dataset.price=sz.dataset.price;
+      });
+    });
+    add.addEventListener('click', function(){
+      var key=add.dataset.name+'|'+add.dataset.size;
+      if(!cart[key]) cart[key]={name:add.dataset.name, size:add.dataset.size, price:+add.dataset.price, qty:0};
+      cart[key].qty++; save(); render();
+      add.textContent='Added ✓'; setTimeout(function(){ add.textContent = add.dataset.size==='Box of 9' ? 'Add to cart · $54' : 'Add to cart'; }, 1200);
+    });
+  });
+  function openCart(){ drawer.classList.add('open'); overlay.classList.add('open'); }
+  function closeCart(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+  fab.addEventListener('click', openCart);
+  overlay.addEventListener('click', closeCart);
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  document.getElementById('cartForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var name=document.getElementById('cfName').value.trim();
+    var phone=document.getElementById('cfPhone').value.trim();
+    var status=document.getElementById('cartStatus');
+    var items=Object.keys(cart).map(function(k){ return cart[k]; });
+    if(!items.length){ status.textContent='Your cart is empty.'; return; }
+    if(!name||!phone){ status.textContent='Please add your name and phone.'; return; }
+    status.textContent='Sending…';
+    fetch('/api/order', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      name:name, phone:phone,
+      when:document.getElementById('cfWhen').value.trim(),
+      note:document.getElementById('cfNote').value.trim(),
+      items:items, total:totals().t
+    })}).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      if(res.ok){ status.textContent='Order sent! We will text you back very soon.'; cart={}; save(); render(); }
+      else { status.textContent='Hmm, sending failed — please try again in a minute.'; }
+    }).catch(function(){ status.textContent='Hmm, sending failed — please try again in a minute.'; });
+  });
+  render();
+})();
+</script>
 </body>
 </html>
