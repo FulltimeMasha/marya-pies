@@ -4,7 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light" />
-<link rel="icon" href="data:," />
+<link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preload" href="fonts/Monomakh-Regular.ttf" as="font" type="font/ttf" crossorigin />
 <title>Marya Pies — Every pie tells a fairy tale</title>
 <meta name="description" content="Handmade berry pies in Knightdale, North Carolina. Juicy, ripe, still warm. Find us at the farmers market on Saturdays." />
@@ -185,6 +187,15 @@ a{color:inherit}
 .card-note{font-size:13px; font-weight:700; color:var(--cherry)}
 .preorder-link{font-weight:800; font-size:14.5px; color:var(--cranberry); text-decoration:none; border-bottom:2px solid var(--butter); padding-bottom:1px}
 .preorder-link:hover{color:var(--cherry)}
+.pie-nav{display:flex; gap:20px; flex-wrap:wrap; margin:4px 0 10px}
+.pie-btn{display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:none; cursor:pointer; padding:0; font:inherit}
+.pie-btn .disc{width:84px; height:84px; border-radius:50%; overflow:hidden; border:4px solid #E7B958; box-shadow:0 4px 14px rgba(99,18,24,.18); display:flex; align-items:center; justify-content:center; background:#F0CB81; transition:transform .2s ease, border-color .2s ease}
+.pie-btn .disc img{width:100%; height:100%; object-fit:cover}
+.pie-btn .disc span{font-family:"Monomakh",serif; font-size:21px; color:#631218}
+.pie-btn small{font-size:12.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:#631218}
+.pie-btn.active .disc{border-color:#A41231; transform:scale(1.08)}
+.card[hidden]{display:none}
+.group-head[hidden]{display:none}
 .group-head{font-family:"Monomakh",serif; font-weight:400; font-size:30px; color:var(--cherry); margin:28px 0 14px}
 .pies-footnote{margin:18px 2px 0; font-size:13.5px; color:var(--ink-soft); text-align:center}
 
@@ -284,9 +295,15 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
         <span class="section-tag">Baked fresh for Saturday</span>
       </div>
 
+      <div class="pie-nav" role="group" aria-label="Pie categories">
+        <button class="pie-btn active" data-filter="all" type="button"><span class="disc"><span>All</span></span><small>All</small></button>
+        <button class="pie-btn" data-filter="pie" type="button"><span class="disc"><img src="assets/pie-gretel.jpg" alt="" /></span><small>Pies</small></button>
+        <button class="pie-btn" data-filter="quiche" type="button"><span class="disc"><img src="assets/pie-hansel.jpg" alt="" /></span><small>Quiches</small></button>
+        <button class="pie-btn" data-filter="tart" type="button"><span class="disc"><img src="assets/pie-sweet-box.jpg" alt="" /></span><small>Tarts &amp; Tartlets</small></button>
+      </div>
       <h3 class="group-head">Savory pies</h3>
       <div class="cards">
-        <article class="card">
+        <article class="card" data-cat="quiche">
           <div class="card-photo"><img src="assets/pie-hansel.jpg" alt="Hansel — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -300,7 +317,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="pie">
           <div class="card-photo"><img src="assets/pie-gretel.jpg" alt="Gretel — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -314,7 +331,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="pie">
           <div class="card-photo"><img src="assets/pie-leprechaun.jpg" alt="Leprechaun — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -328,7 +345,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="quiche">
           <div class="card-photo"><img src="assets/pie-mermaid.jpg" alt="Mermaid — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -342,7 +359,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="quiche">
           <div class="card-photo"><img src="assets/pie-triton.jpg" alt="Triton — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -356,7 +373,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="quiche">
           <div class="card-photo"><img src="assets/pie-dragon.jpg" alt="Dragon — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -370,7 +387,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="quiche">
           <div class="card-photo"><img src="assets/pie-pixie.jpg" alt="Pixie — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -384,7 +401,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="quiche">
           <div class="card-photo"><img src="assets/pie-miller.jpg" alt="Miller — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -401,7 +418,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
       </div>
       <h3 class="group-head">Sweet pies</h3>
       <div class="cards">
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-briarose.jpg" alt="Briarose — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -415,7 +432,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-brownie.jpg" alt="Brownie — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -429,7 +446,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-bluebell.jpg" alt="Bluebell — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -443,7 +460,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="pie">
           <div class="card-photo"><img src="assets/pie-andersen.jpg" alt="Andersen — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -457,7 +474,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-goldilocks.jpg" alt="Goldilocks — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -471,7 +488,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-moonberry.jpg" alt="Moonberry — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -488,7 +505,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
       </div>
       <h3 class="group-head">Tartlet boxes</h3>
       <div class="cards">
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-savory-box.jpg" alt="Savory Tartlet Box — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -502,7 +519,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-cat="tart">
           <div class="card-photo"><img src="assets/pie-sweet-box.jpg" alt="Sweet Odyssey Box — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -585,5 +602,22 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
   </div>
 </footer>
 
+  <script>
+    document.querySelectorAll('.pie-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.pie-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.dataset.filter;
+        document.querySelectorAll('#pies .card').forEach(function(c){
+          c.hidden = (f !== 'all' && c.dataset.cat !== f);
+        });
+        document.querySelectorAll('#pies .group-head').forEach(function(h){
+          var grid = h.nextElementSibling, any = false;
+          if (grid) grid.querySelectorAll('.card').forEach(function(c){ if (!c.hidden) any = true; });
+          h.hidden = !any;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
