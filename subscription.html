@@ -9,41 +9,355 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preload" href="fonts/Monomakh-Regular.ttf" as="font" type="font/ttf" crossorigin />
 <title>Pie Club — Marya Pies</title>
-<meta name="description" content="The Marya Pies Pie Club: every Friday two big pies — one savory, one sweet — baked in the morning and delivered to your door. $75/week, pause anytime." />
+<meta name="description" content="The Marya Pies Pie Club: every Friday two big pies — one savory, one sweet — baked in the morning and delivered to your door. $75/week, pause anytime. Pre-registration is open." />
 <style>
 @font-face{
   font-family:"Monomakh";
   src:url("fonts/Monomakh-Regular.woff2") format("woff2"), url("fonts/Monomakh-Regular.ttf") format("truetype");
-  font-weight:400; font-style:normal; font-display:swap;
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
 }
 :root{
-  --cranberry:#A41231; --cherry:#631218; --cherry-deep:#4A0D11;
-  --cream:#FFF3EA; --cream-2:#FFFBF6; --butter:#F0CB81; --butter-soft:#F7DCA6;
-  --ink:#2B1214; --ink-soft:#6B4A4D; --line:rgba(99,18,24,.12);
+  --cranberry:#A41231;
+  --cranberry-dark:#8E0F2A;
+  --cherry:#631218;
+  --cherry-deep:#4A0D11;
+  --cream:#FFF3EA;
+  --cream-2:#FFFBF6;
+  --butter:#F0CB81;
+  --butter-soft:#F7DCA6;
+  --ink:#2B1214;
+  --ink-soft:#6B4A4D;
+  --line:rgba(99,18,24,.12);
+  --radius-lg:28px;
+  --radius-md:20px;
+  --shadow-warm:0 24px 50px rgba(74,13,17,.28);
   --shadow-card:0 10px 30px rgba(99,18,24,.10), 0 2px 8px rgba(99,18,24,.06);
 }
 *{box-sizing:border-box; font-family:"Monomakh", Georgia, serif}
 html{scroll-behavior:smooth}
-body{margin:0; background:var(--cream); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.55}
-img{display:block; max-width:100%}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Monomakh", Georgia, serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+img{display:block;max-width:100%}
 a{color:inherit}
+.mono{font-family:"Monomakh", Georgia, serif; font-weight:400; letter-spacing:.01em}
 .wrap{width:min(1180px, calc(100% - 40px)); margin:0 auto}
-.topbar{background:var(--cherry); color:var(--cream); position:sticky; top:0; z-index:50; border-bottom:1px solid rgba(240,203,129,.22)}
-.topbar-inner{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:12px 0}
-.wordmark{grid-column:2; font-size:clamp(25px,6vw,46px); line-height:1; letter-spacing:.03em; text-align:center; color:#FFF6EC; text-decoration:none; white-space:nowrap}
-.nav{grid-column:1; justify-self:start; display:flex; gap:14px; font-size:13.5px; font-weight:600; white-space:nowrap}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  background:var(--cherry);
+  color:var(--cream);
+  position:sticky; top:0; z-index:50;
+  border-bottom:1px solid rgba(240,203,129,.22);
+}
+.topbar-inner{
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  padding:18px 0 14px;
+}
+.wordmark{
+  font-family:"Monomakh",serif; font-weight:400;
+  font-size:clamp(34px, 9vw, 60px);
+  line-height:1; letter-spacing:.05em; text-align:center;
+  color:#FFF6EC; text-decoration:none; white-space:nowrap;
+}
+.menu-row{
+  display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+  gap:10px 26px;
+}
+.nav{display:flex; gap:26px; font-size:15px; font-weight:600}
 .nav a{text-decoration:none; color:#FFEEDD; opacity:.92}
 .nav a:hover{opacity:1; color:var(--butter)}
-.topbar .btn{grid-column:3; justify-self:end}
-@media(max-width:700px){.nav{display:none}}
-.btn{display:inline-block; text-decoration:none; border:none; cursor:pointer; border-radius:999px; padding:14px 26px; font-size:16px; font-weight:700; text-align:center}
-.btn-butter{background:var(--butter); color:var(--cherry-deep)}
-.btn-butter:hover{background:var(--butter-soft)}
-.btn-cranberry{background:var(--cranberry); color:#FFF6EC}
-.btn-small{padding:8px 13px; font-size:13px; white-space:nowrap}
-.fn-hero{padding:56px 0 30px; text-align:center}
-.fn-eyebrow{display:inline-block; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--cranberry); font-weight:700; border:1px solid var(--line); border-radius:999px; padding:6px 14px; background:var(--cream-2)}
-.fn-hero h1{font-size:clamp(38px,7.5vw,64px); line-height:1.05; margin:18px 0 10px; color:var(--cherry); font-weight:400}
+@media(max-width:560px){
+  .topbar-inner{padding:14px 0 12px}
+  .nav{gap:20px; font-size:14px}
+  .topbar .btn-small{padding:9px 15px; font-size:13.5px}
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  text-decoration:none; font-weight:800; border-radius:999px;
+  padding:13px 22px; font-size:15px; line-height:1; white-space:nowrap;
+  transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  border:1.5px solid transparent; cursor:pointer;
+}
+.btn:active{transform:scale(.98)}
+.btn-butter{background:var(--butter); color:var(--cherry); box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.btn-butter:hover{background:#F5D69A}
+.btn-cranberry{background:var(--cranberry); color:#fff; box-shadow:0 12px 26px rgba(164,18,49,.35)}
+.btn-cranberry:hover{background:var(--cranberry-dark)}
+.btn-outline{background:transparent; color:var(--cream); border-color:rgba(255,243,234,.55)}
+.btn-outline:hover{border-color:var(--butter); color:var(--butter)}
+.btn-small{padding:10px 18px; font-size:14px}
+
+
+/* ---------- Hero ---------- */
+.hero{
+  background-color:var(--cherry-deep);
+  background-image:
+    linear-gradient(rgba(74,13,17,.38), rgba(43,7,10,.52)),
+    url("assets/hero-bg-2x.jpg");
+  background-size:cover;
+  background-position:center;
+  color:var(--cream);
+  overflow:hidden;
+  position:relative;
+}
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:26px;
+  background:var(--cream);
+  border-radius:28px 28px 0 0;
+}
+.hero-inner{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:44px 0 64px; position:relative; z-index:1;
+}
+@media(min-width:920px){ .hero-inner{padding:56px 0 76px} }
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:800; color:var(--butter);
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:""; width:28px; height:2px; display:inline-block; border-radius:2px; background:var(--butter)}
+.hero-lockup{
+  display:flex; flex-direction:column; align-items:center; gap:20px; margin-top:24px;
+}
+.hero-logo{
+  width:min(180px, 44vw); height:auto; flex:0 0 auto;
+  filter:drop-shadow(0 14px 34px rgba(0,0,0,.45));
+}
+.hero-tagline{
+  font-family:"Monomakh",serif; font-weight:400;
+  font-size:clamp(38px, 7vw, 62px);
+  line-height:1.05; margin:0; color:var(--cream); letter-spacing:.01em;
+  text-shadow:0 4px 24px rgba(0,0,0,.45);
+}
+@media(min-width:760px){
+  .hero-lockup{flex-direction:row; justify-content:center; gap:38px; margin-top:30px}
+  .hero-logo{width:min(195px, 20vw)}
+  .hero-tagline{text-align:left; font-size:clamp(42px, 5vw, 60px); max-width:12ch}
+}
+.hero-tagline em{font-style:normal; color:var(--butter)}
+.hero-lead{font-size:clamp(16.5px,2.2vw,19.5px); line-height:1.6; color:#FFE8D6; max-width:54ch; margin:16px auto 0}
+.hero-lead strong{color:#fff}
+.hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; justify-content:center}
+.hero-notes{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:24px; font-size:14px; color:#FFD9C2; font-weight:600; justify-content:center}
+.hero-notes span{display:inline-flex; align-items:center; gap:8px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--butter); flex:0 0 auto}
+
+/* marquee */
+.marquee{background:var(--cream); border-bottom:1px solid var(--line); overflow:hidden; padding:14px 0 4px}
+.marquee-track{
+  display:flex; gap:0; white-space:nowrap; width:max-content;
+  animation:scroll 28s linear infinite;
+  font-family:"Monomakh",serif; font-size:18px; color:var(--cranberry); letter-spacing:.08em;
+}
+.marquee-track span{padding:0 14px}
+.marquee-track i{font-style:normal; color:#D9A05A}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){ .marquee-track{animation:none} }
+
+/* ---------- Pies ---------- */
+.pies{padding:44px 0 64px; background:var(--cream)}
+.section-head{display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:16px; margin-bottom:26px}
+.section-head h2{font-family:"Monomakh",serif; font-weight:400; font-size:clamp(36px,6vw,52px); line-height:1; margin:0; color:var(--cherry)}
+.section-head p{margin:8px 0 0; color:var(--ink-soft); font-size:16.5px; max-width:46ch}
+.section-tag{font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cranberry); background:#FBE3D3; border:1px solid #F3C9AE; padding:8px 12px; border-radius:999px; white-space:nowrap}
+.cards{display:grid; gap:20px}
+@media(min-width:820px){ .cards{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:819px){
+  .cards{grid-template-columns:repeat(2,1fr); gap:12px}
+  .card{border-radius:18px}
+  .card-body{padding:12px 12px 14px}
+  .card-top{flex-direction:column; gap:3px}
+  .card h3{font-size:21px}
+  .price{flex-direction:column; text-align:left; font-size:12.5px}
+  .price b{font-size:16px}
+  .card p{font-size:12.5px; line-height:1.5; margin-top:8px}
+  .card-foot{margin-top:12px; padding-top:10px}
+  .card-note{font-size:10.5px; line-height:1.4}
+  .buy{gap:8px; margin-top:10px}
+  .sizes{gap:5px; flex-wrap:wrap}
+  .sz{padding:5px 8px; font-size:11px; border-width:1.5px}
+  .card .btn-small{padding:8px 12px; font-size:12.5px}
+  .section-tag{white-space:normal; text-align:center; line-height:1.5}
+}
+.card{
+  background:var(--cream-2); border:1px solid var(--line); border-radius:24px; overflow:hidden;
+  box-shadow:var(--shadow-card); display:flex; flex-direction:column;
+}
+.card-photo{position:relative; aspect-ratio:4/3; overflow:hidden; background:#EAD9C8}
+.card-photo img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+.card:hover .card-photo img{transform:scale(1.04)}
+@media(prefers-reduced-motion:reduce){ .card:hover .card-photo img{transform:none} }
+.card-body{padding:20px 20px 22px; display:flex; flex-direction:column; flex:1}
+.card-top{display:flex; align-items:start; justify-content:space-between; gap:12px}
+.card h3{font-family:"Monomakh",serif; font-weight:400; font-size:26px; line-height:1.05; margin:0; color:var(--cherry)}
+.price{font-family:"Monomakh",serif; font-size:26px; color:var(--cranberry); white-space:nowrap; line-height:1}
+.price small{display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); text-align:right; margin-top:4px; font-family:"Monomakh", Georgia, serif; font-weight:700}
+.card p{color:var(--ink-soft); font-size:15.5px; line-height:1.6; margin:10px 0 0; flex:1}
+.card-foot{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; padding-top:16px; border-top:1px dashed var(--line)}
+.card-note{font-size:13px; font-weight:700; color:var(--cherry)}
+section[id]{scroll-margin-top:96px}
+.preorder-link{font-weight:800; font-size:14.5px; color:var(--cranberry); text-decoration:none; border-bottom:2px solid var(--butter); padding-bottom:1px}
+.preorder-link:hover{color:var(--cherry)}
+.pie-nav{display:flex; gap:8px; flex-wrap:nowrap; justify-content:space-between; margin:4px 0 12px}
+@media (min-width:768px){.pie-nav{justify-content:center; gap:54px}}
+.pie-btn{display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:none; cursor:pointer; padding:0; font:inherit}
+.pie-btn .disc{width:70px; height:70px; display:flex; align-items:center; justify-content:center; transition:transform .2s ease}
+.pie-btn .disc img{max-width:100%; max-height:100%; object-fit:contain}
+.pie-btn .disc span{font-family:"Monomakh",serif; font-size:21px; color:#631218}
+.pie-btn small{font-size:12.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:#631218}
+.pie-btn.active .disc{transform:scale(1.14); filter:drop-shadow(0 4px 8px rgba(164,18,49,.35))}
+.pie-btn.active small{color:#A41231}
+.card[hidden]{display:none}
+.group-head[hidden]{display:none}
+
+
+.btn-pie{display:inline-flex; align-items:center; justify-content:center; width:min(370px,88vw); aspect-ratio:1100/372; background-color:transparent; background-image:url('assets/btn-pie.png'); background-size:100% 100%; background-repeat:no-repeat; color:#FFF7EA; font-size:21px; letter-spacing:.03em; text-shadow:0 2px 10px rgba(60,5,12,.5); box-shadow:none; padding:0 13%; margin:16px 0 6px}
+.btn-pie:hover{background-color:transparent; filter:brightness(1.06)}
+
+.buy{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; flex-wrap:wrap}
+.sizes{display:flex; gap:6px}
+.sz{border:2px solid #D9B98A; background:transparent; color:var(--ink-soft); border-radius:999px; padding:6px 12px; font-size:13.5px; font-weight:700; cursor:pointer}
+.sz.active{background:#F0CB81; border-color:#B97F26; color:#631218}
+#cartFab{position:fixed; right:16px; bottom:16px; z-index:60; background:var(--cranberry); color:#FFF7EA; border:none; border-radius:999px; padding:14px 20px; font-size:16px; font-weight:800; box-shadow:0 10px 26px rgba(60,10,16,.35); cursor:pointer; display:none}
+#cartFab.show{display:block}
+#cartOverlay{position:fixed; inset:0; background:rgba(38,5,10,.5); z-index:70; display:none}
+#cartOverlay.open{display:block}
+#cartDrawer{position:fixed; top:0; right:0; height:100dvh; width:min(420px,94vw); background:#FFFBF2; z-index:71; transform:translateX(105%); transition:transform .25s ease; padding:20px; overflow-y:auto; box-shadow:-12px 0 32px rgba(60,10,16,.25)}
+#cartDrawer.open{transform:none}
+#cartDrawer h3{margin:0 0 4px; color:var(--cherry)}
+.cart-item{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:9px 0; border-bottom:1px dashed #E3CDA8}
+.cart-item .qty{display:flex; gap:6px; align-items:center}
+.qty button{width:26px; height:26px; border-radius:50%; border:2px solid #D9B98A; background:#fff; font-weight:800; cursor:pointer}
+.cart-total{display:flex; justify-content:space-between; font-weight:800; font-size:18px; margin:14px 0; color:var(--cherry)}
+.cart-form input,.cart-form textarea{width:100%; padding:11px 12px; border:2px solid #E3CDA8; border-radius:12px; margin-bottom:10px; font-size:16px; background:#fff; box-sizing:border-box}
+.cart-note{font-size:13px; color:var(--ink-soft)}
+#cartStatus{margin-top:10px; font-weight:700}
+.badge{position:absolute; top:12px; left:12px; z-index:2; padding:6px 11px; border-radius:999px; font-size:11.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#FFF7EA; box-shadow:0 3px 10px rgba(60,10,16,.28)}
+.badge.spicy{background:#A41231}
+.badge.veg{background:#4C7A3F}
+.badge.sea{background:#2E5E6B}
+.badge.set{background:#F0CB81; color:#631218}
+.price{display:flex; flex-direction:column; gap:2px; text-align:right; font-size:14.5px; font-weight:700; color:var(--ink-soft); white-space:nowrap}
+.price b{font-size:19px; color:var(--cranberry)}
+.group-head{font-family:"Monomakh",serif; font-weight:400; font-size:30px; color:var(--cherry); margin:28px 0 14px}
+.pies-footnote{margin:18px 2px 0; font-size:13.5px; color:var(--ink-soft); text-align:center}
+
+/* ---------- Story / butter band ---------- */
+.story{background:var(--butter); color:var(--cherry); position:relative; overflow:hidden}
+.story::before{content:"✳"; position:absolute; right:-10px; top:6px; font-size:120px; opacity:.12; font-family:"Monomakh", Georgia, serif; line-height:1}
+.story-grid{display:grid; gap:26px; padding:48px 0 52px; align-items:center}
+@media(min-width:880px){ .story-grid{grid-template-columns:.92fr 1.08fr; gap:44px; padding:60px 0 64px} }
+.story-photo{border-radius:24px; overflow:hidden; box-shadow:0 22px 44px rgba(99,18,24,.28); border:3px solid rgba(255,243,234,.7); aspect-ratio:4/4.6; background:#D9A05A}
+@media(min-width:880px){ .story-photo{aspect-ratio:4/4.9} }
+.story-photo img{width:100%; height:100%; object-fit:cover; object-position:center 22%}
+.story-kicker{font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:800; color:var(--cranberry)}
+.story h2{font-family:"Monomakh",serif; font-weight:400; font-size:clamp(36px,6vw,54px); line-height:1; margin:12px 0 0}
+.story-text{font-size:18px; line-height:1.65; margin:16px 0 0; max-width:54ch; color:#4A1E14}
+.story-text strong{color:var(--cherry)}
+.once{font-family:"Monomakh",serif; font-size:26px; margin:22px 0 0; color:var(--cranberry)}
+.story-facts{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px; max-width:520px}
+.fact{background:rgba(255,243,234,.72); border:1px solid rgba(99,18,24,.12); border-radius:16px; padding:14px 16px}
+.fact b{display:block; font-family:"Monomakh",serif; font-weight:400; font-size:20px; line-height:1.1}
+.fact span{font-size:13.5px; color:#6B3A2E; line-height:1.45; display:block; margin-top:4px}
+
+/* ---------- CTA band ---------- */
+.cta{background:var(--cranberry); color:#fff; text-align:center; position:relative; overflow:hidden}
+.cta::before,.cta::after{content:""; position:absolute; border-radius:50%; background:rgba(255,255,255,.07)}
+.cta::before{width:340px;height:340px; left:-120px; top:-160px}
+.cta::after{width:300px;height:300px; right:-100px; bottom:-150px}
+.cta-inner{padding:52px 0 56px; position:relative; z-index:1}
+.cta h2{font-family:"Monomakh",serif; font-weight:400; font-size:clamp(38px,7vw,60px); line-height:1; margin:0}
+.cta p{font-size:17.5px; color:#FFD9DE; max-width:52ch; margin:14px auto 0; line-height:1.6}
+.cta .btn{margin-top:26px; font-size:16px; padding:16px 28px}
+.cta small{display:block; margin-top:16px; font-size:13.5px; color:#FFC4CC}
+
+/* ---------- Footer ---------- */
+footer{background:var(--cherry-deep); color:#FFEEDD}
+.footer-grid{display:grid; gap:28px; padding:40px 0 28px}
+@media(min-width:820px){ .footer-grid{grid-template-columns:1.2fr .8fr .8fr; gap:36px} }
+.footer-brand img{width:124px; height:auto; background:transparent; border:0; border-radius:0; box-shadow:none; filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.footer-brand-top{display:flex; align-items:center; gap:16px}
+.footer-tagline{font-family:"Monomakh",serif; font-size:22px; line-height:1.18; color:var(--cream); max-width:150px}
+.footer-brand p{color:#E8C4B2; font-size:14.5px; line-height:1.6; max-width:32ch; margin:12px 0 0}
+footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:4px 0 12px; color:var(--butter)}
+.footer-links{list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px}
+.footer-links a{text-decoration:none; color:#FFEEDD}
+.footer-links a:hover{color:var(--butter); text-decoration:underline}
+.footer-info{font-size:15px; line-height:1.7; color:#FFEEDD}
+.footer-info span{color:#E8C4B2}
+.footer-bottom{border-top:1px solid rgba(240,203,129,.2); padding:16px 0 22px; display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:space-between; font-size:13px; color:#C99A8A}
+.hero-logo-wrap{position:relative;display:inline-block;flex:0 0 auto;line-height:0}.hero-logo-wrap::before{content:"";position:absolute;width:136%;aspect-ratio:1/1;left:50%;top:49%;transform:translate(-50%,-50%);border-radius:50%;z-index:0;background:radial-gradient(circle at 38% 30%,rgba(249,224,164,.92),rgba(240,203,129,.55) 55%,rgba(231,184,99,0) 88%);filter:blur(10px);opacity:.85;box-shadow:0 18px 44px rgba(0,0,0,.35)}.hero-logo-wrap .hero-logo{position:relative;z-index:1}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.topbar-inner{flex-direction:row;justify-content:space-between;align-items:center;gap:12px;padding:12px 0}.wordmark{font-size:clamp(21px,5.6vw,38px);text-align:left;letter-spacing:.03em}.menu-row{flex-wrap:nowrap;gap:8px 14px;justify-content:flex-end}.nav{gap:14px;font-size:13.5px;white-space:nowrap}.topbar .btn-small{padding:8px 13px;font-size:13px;white-space:nowrap}@media(max-width:560px){.wordmark{font-size:19px}.nav{gap:9px;font-size:12px}.topbar .btn-small{padding:7px 10px;font-size:12px}.menu-row{gap:8px 9px}}.topbar-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:12px 0}.wordmark{grid-column:2;font-size:clamp(28px,6vw,46px);text-align:center}.menu-row{display:contents}.nav{grid-column:1;justify-self:start}.topbar .btn-small{grid-column:3;justify-self:end}@media(max-width:700px){.nav{display:none}.wordmark{font-size:clamp(25px,7.2vw,34px)}}.orb{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);z-index:2;pointer-events:none}.orb.berry{border-radius:50%;background:radial-gradient(circle at 32% 28%,#FF9D9D,#D21F3C 55%,#8E0F2A);box-shadow:0 3px 8px rgba(0,0,0,.35);animation:orbFloat var(--d) ease-in-out var(--dl) infinite}.orb.spark{background:radial-gradient(circle,#FFF3C4 0%,var(--butter) 45%,rgba(240,203,129,0) 72%);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:orbTwinkle var(--d) ease-in-out var(--dl) infinite}@keyframes orbFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-11px) rotate(8deg)}}@keyframes orbTwinkle{0%,100%{transform:scale(.72) rotate(0deg);opacity:.55}50%{transform:scale(1.12) rotate(22deg);opacity:1}}@media (prefers-reduced-motion: reduce){.orb{animation:none}}@media(min-width:701px){.hero-lockup{gap:clamp(52px,6vw,88px)}}.wordmark{grid-row:1}.nav{grid-row:1}.topbar .btn-small{grid-row:1}.marquee{position:relative;padding:19px 0}.marquee::before,.marquee::after{content:"";position:absolute;left:0;right:0;height:14px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20120%2016%27%3E%3Cpath%20d%3D%27M0%208%20Q15%201%2030%208%20T60%208%20T90%208%20T120%208%27%20fill%3D%27none%27%20stroke%3D%27%236B7F4E%27%20stroke-width%3D%272%27%2F%3E%3Cpath%20d%3D%27M30%207c-5-5-11-4-12-4%201%205%207%207%2012%204z%27%20fill%3D%27%235A7247%27%2F%3E%3Cpath%20d%3D%27M88%209c5%205%2011%204%2012%204-1-5-7-7-12-4z%27%20fill%3D%27%2374875A%27%2F%3E%3Ccircle%20cx%3D%2752%27%20cy%3D%2710%27%20r%3D%273.4%27%20fill%3D%27%23C21737%27%2F%3E%3Ccircle%20cx%3D%2757.5%27%20cy%3D%2712%27%20r%3D%272.7%27%20fill%3D%27%23A41231%27%2F%3E%3Ccircle%20cx%3D%27105%27%20cy%3D%276%27%20r%3D%273%27%20fill%3D%27%23C21737%27%2F%3E%3Ccircle%20cx%3D%27110%27%20cy%3D%279.5%27%20r%3D%272.4%27%20fill%3D%27%238E0F2A%27%2F%3E%3C%2Fsvg%3E") repeat-x center/auto 14px;pointer-events:none}.marquee::before{top:1px}.marquee::after{bottom:1px;transform:scaleY(-1)}.marquee-track .mb{display:inline-block;width:16px;height:16px;margin:0 9px;vertical-align:-3px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cpath%20d%3D%27M13%202c-3%200-5%202-5%202s2.5%202%205%201c2-1%203-3%203-3s-1.5%200-3%200z%27%20fill%3D%27%235A7247%27%2F%3E%3Ccircle%20cx%3D%278%27%20cy%3D%2713%27%20r%3D%274.6%27%20fill%3D%27%23C21737%27%2F%3E%3Ccircle%20cx%3D%276.6%27%20cy%3D%2711.2%27%20r%3D%271.5%27%20fill%3D%27%23FF9AA6%27%2F%3E%3Ccircle%20cx%3D%2715.5%27%20cy%3D%2715%27%20r%3D%275.2%27%20fill%3D%27%23A41231%27%2F%3E%3Ccircle%20cx%3D%2713.8%27%20cy%3D%2713%27%20r%3D%271.7%27%20fill%3D%27%23FF8A94%27%2F%3E%3Ccircle%20cx%3D%2710.5%27%20cy%3D%2719.5%27%20r%3D%273.4%27%20fill%3D%27%23D21F3C%27%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}.marquee{padding:6px 0}.marquee::before,.marquee::after{display:none}.marquee-track .mq-chunk{display:flex;flex-direction:column;justify-content:center}.marquee-track .mq-line{display:flex;align-items:center;white-space:nowrap}.marquee-track .vine{display:block;height:20px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2020%27%3E%3Cpath%20d%3D%27M0%2010%20Q18%202%2037%2010%20T75%2010%20T112%2010%20T150%2010%27%20fill%3D%27none%27%20stroke%3D%27%2355703F%27%20stroke-width%3D%273.5%27%2F%3E%3Cpath%20d%3D%27M0%2013%20Q18%206%2037%2013%20T75%2013%20T112%2013%20T150%2013%27%20fill%3D%27none%27%20stroke%3D%27%237A8B5F%27%20stroke-width%3D%272%27%2F%3E%3Cpath%20d%3D%27M36%208c-6-6-13-5-15-4%201%206%209%208%2015%204z%27%20fill%3D%27%235A7247%27%2F%3E%3Cpath%20d%3D%27M96%2012c6%206%2013%205%2015%204-1-6-9-8-15-4z%27%20fill%3D%27%23687C4B%27%2F%3E%3Cpath%20d%3D%27M118%206c-2-5-8-6-9-6%200%205%204%208%209%206z%27%20fill%3D%27%235A7247%27%2F%3E%3Ccircle%20cx%3D%2758%27%20cy%3D%2713%27%20r%3D%274.6%27%20fill%3D%27%23C21737%27%2F%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%2715.5%27%20r%3D%273.8%27%20fill%3D%27%23A41231%27%2F%3E%3Ccircle%20cx%3D%2755%27%20cy%3D%2716.5%27%20r%3D%273%27%20fill%3D%27%23D21F3C%27%2F%3E%3Ccircle%20cx%3D%2756.4%27%20cy%3D%2711.4%27%20r%3D%271.4%27%20fill%3D%27%23FF9AA6%27%2F%3E%3Ccircle%20cx%3D%27130%27%20cy%3D%278%27%20r%3D%274%27%20fill%3D%27%23A41231%27%2F%3E%3Ccircle%20cx%3D%27135%27%20cy%3D%2711.5%27%20r%3D%273.1%27%20fill%3D%27%23C21737%27%2F%3E%3Ccircle%20cx%3D%27128.6%27%20cy%3D%276.6%27%20r%3D%271.2%27%20fill%3D%27%23FF9AA6%27%2F%3E%3C%2Fsvg%3E") repeat-x center/auto 20px}.marquee-track .vine.flip{transform:scaleY(-1)}.marquee{background:transparent}.marquee-track{animation-duration:65s;color:#631218}.hero{position:relative}.hero>.orb{z-index:3}.marquee{margin-top:0;border:none}.mq-text{text-shadow:none}.mq-text{color:#631218}.story-photo{aspect-ratio:4/3}.story-photo img{object-position:center center}@media(min-width:701px){.story-grid{grid-template-columns:1.06fr .94fr}}.story::before{content:none}.story .btn{margin-top:22px}
+
+/* bite effect: ONLY the hero cranberry button gets nibbled on hover/tap, crumbs fly off */
+@property --bite{syntax:'<length>';inherits:false;initial-value:0px}.btn-bite{position:relative;--bite:0px;-webkit-mask-image:radial-gradient(circle var(--bite) at calc(100% - 1px) 50%,transparent calc(var(--bite) - 1.5px),#000 var(--bite));-webkit-mask-repeat:no-repeat;mask-image:radial-gradient(circle var(--bite) at calc(100% - 1px) 50%,transparent calc(var(--bite) - 1.5px),#000 var(--bite));mask-repeat:no-repeat;transition:--bite .3s ease,transform .15s ease,background .15s ease,box-shadow .15s ease}.btn-bite:hover,.btn-bite.bitten{--bite:12px}.crumb-layer{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}.crumb{position:fixed;border-radius:55% 45% 60% 40%;pointer-events:none}@media (prefers-reduced-motion: reduce){.btn-bite{transition:none}}
+
+/* mobile cards final overrides (after all other rules) */
+@media(max-width:819px){
+  .cards{grid-template-columns:repeat(2,1fr); gap:12px}
+  .card{border-radius:18px}
+  .card-body{padding:12px 10px 14px}
+  .card-top{flex-direction:column; gap:3px}
+  .card h3{font-size:21px}
+  .card p{font-size:12.5px; line-height:1.5; margin-top:8px}
+  .card-foot{margin-top:12px; padding-top:10px}
+  .card-note{font-size:10px; white-space:nowrap; letter-spacing:-.01em}
+  .buy{gap:8px; margin-top:10px}
+  .sizes{gap:5px; flex-wrap:wrap}
+  .sz{padding:5px 8px; font-size:11px; border-width:1.5px}
+  .card .btn-small{padding:8px 12px; font-size:12.5px}
+  .section-tag{white-space:normal; text-align:center; line-height:1.5}
+}
+
+/* pie popup */
+.pie-modal{position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; padding:14px}
+.pie-modal[hidden]{display:none}
+.pie-modal-backdrop{position:absolute; inset:0; background:rgba(43,4,10,.55)}
+.pie-modal-box{position:relative; background:var(--cream-2); border-radius:24px; overflow:hidden; width:min(520px,100%); max-height:92dvh; overflow-y:auto; box-shadow:0 24px 60px rgba(43,4,10,.45)}
+.pie-modal-photo{aspect-ratio:4/3; background:#EAD9C8}
+.pie-modal-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.pie-modal-close{position:absolute; top:10px; right:10px; z-index:2; width:38px; height:38px; border-radius:50%; border:none; background:rgba(255,251,242,.94); color:var(--cherry); font-size:22px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(43,4,10,.25)}
+.pie-modal-body{padding:20px 22px 24px}
+.pie-modal-body h3{font-family:"Monomakh",serif; font-weight:400; font-size:31px; line-height:1.05; margin:0; color:var(--cherry)}
+.pie-modal-body p{color:var(--ink-soft); font-size:15.5px; line-height:1.6; margin:10px 0 0}
+.pie-modal-note{margin-top:16px; padding-top:13px; border-top:1px dashed var(--line); font-size:13px; font-weight:700; color:var(--cherry)}
+.pie-modal-facts{margin-top:13px; font-size:12.5px; line-height:1.55; color:var(--ink-soft)}
+.pie-modal-facts b{color:var(--cherry); font-weight:800}
+.pie-modal-facts div+div{margin-top:3px}
+.pie-modal .buy{margin-top:14px}
+.card .card-photo{cursor:pointer}
+
+/* family night banner */
+.fn-banner{background:var(--cherry); color:var(--cream); padding:30px 0}
+.fn-banner-in{display:flex; align-items:center; gap:18px 26px; flex-wrap:wrap; justify-content:space-between}
+.fn-banner h2{margin:0; font-weight:400; font-size:clamp(24px,4.4vw,34px); color:#FFF6EC}
+.fn-banner p{margin:4px 0 0; font-size:16px; color:#FFEEDD; opacity:.92; max-width:620px}
+.fn-banner .btn{flex:none}
+.top-btns{grid-column:3; justify-self:end; display:flex; gap:8px; align-items:center}
+.btn-outline{border:1.5px solid var(--butter); color:var(--butter); background:transparent}
+.btn-outline:hover{background:rgba(240,203,129,.14)}
+
+/* sets cards: stack note and button so the button never clips (mobile 2-col) */
+@media(max-width:819px){
+  .card[data-cat="sets"] .card-foot{flex-direction:column; align-items:stretch; gap:8px}
+  .card[data-cat="sets"] .card-note{white-space:normal}
+  .card[data-cat="sets"] .add-btn{width:100%}
+}
+</style>
+<style>
+/* ---- Pie Club page ---- */
+.fn-splash .hero-inner{padding:36px 0 32px; text-align:center}
+.fn-splash .hero-logo{width:min(200px,50vw)}
+.fn-splash .hero-tagline{font-size:clamp(27px,5.6vw,42px)}
+.fn-hero{padding:40px 0 4px; text-align:center}
+.fn-hero h1{font-size:clamp(38px,7.5vw,64px); line-height:1.05; margin:0 0 10px; color:var(--cherry); font-weight:400}
 .fn-hero .lead{font-size:clamp(19px,3.4vw,26px); color:var(--ink); max-width:640px; margin:0 auto 12px}
 .fn-hero .sub{font-size:16.5px; color:var(--ink-soft); max-width:600px; margin:0 auto}
 .fn-price{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:26px 0 6px}
@@ -77,29 +391,43 @@ a{color:inherit}
 .fn-faq b{color:var(--cherry); font-size:16.5px}
 .fn-faq p{margin:3px 0 0; color:var(--ink-soft); font-size:15.5px}
 .fn-close{text-align:center; font-size:19px; color:var(--cherry); margin:36px 0 8px}
-footer{background:var(--cherry-deep); color:#FFEEDD; padding:30px 0; margin-top:44px}
-.footer-in{display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap}
-footer img{width:54px; height:auto}
-footer a{color:var(--butter); text-decoration:none; font-weight:700}
+.fn-footer{background:var(--cherry-deep); color:#FFEEDD; padding:30px 0; margin-top:44px}
+.fn-footer .footer-in{display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+.fn-footer img{width:54px; height:auto}
+.fn-footer a{color:var(--butter); text-decoration:none; font-weight:700}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap topbar-inner">
-    <nav class="nav" aria-label="Main">
-      <a href="index.html#pies">Pies</a>
-      <a href="subscription.html">Pie Club</a>
-      <a href="index.html#story">Our Story</a>
-      <a href="index.html#find-us">Find Us</a>
-    </nav>
     <a class="wordmark" href="index.html" aria-label="Marya Pies — home">MARYA PIES</a>
-    <a class="btn btn-butter btn-small" href="#subscribe">Join the club</a>
+    <div class="menu-row">
+      <nav class="nav" aria-label="Main">
+        <a href="#pies">Pies</a>
+        <a href="subscription.html">Pie Club</a>
+        <a href="index.html#story">Our Story</a>
+        <a href="index.html#find-us">Find Us</a>
+      </nav>
+      <div class="top-btns">
+        <a class="btn btn-outline btn-small" href="index.html#pies">Order once</a>
+        <a class="btn btn-butter btn-small" href="#subscribe">Join the club</a>
+      </div>
+    </div>
   </div>
 </header>
 
-<main>
+<main id="top">
+  <section class="hero fn-splash">
+    <div class="wrap hero-inner">
+      <span class="hero-eyebrow">Knightdale, North Carolina</span>
+      <div class="hero-lockup">
+        <span class="hero-logo-wrap"><img class="hero-logo" src="assets/girl-2.png" alt="Marya Pies logo — girl with a berry wreath biting a slice of cranberry pie" /></span>
+        <h2 class="hero-tagline">Every pie tells a <em>fairy&nbsp;tale</em></h2>
+      </div>
+    </div>
+  </section>
+
   <section class="fn-hero wrap">
-    <span class="fn-eyebrow">Marya Pies · The club</span>
     <h1>Pie Club</h1>
     <p class="lead">We sell Friday — the night the whole family is home.</p>
     <p class="sub">Every Friday, two big pies arrive at your door: one savory, one sweet. Baked that same morning. No cooking, no pile of dishes — just everyone at the table, and the evening is yours. We're still getting ready to open — pre-registration is open now, and the first members get their Fridays first.</p>
@@ -123,7 +451,484 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
         <p>Every box carries a fairy-tale card for the pie of the week. Collect them all — the whole set of Marya's Tales, one Friday at a time.</p>
       </div>
     </div>
+  </section>
 
+<!-- PIES -->
+  <section class="pies" id="pies">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2><span class="sr-only">Our pies</span><span class="deco" aria-hidden="true">Оur ріеѕ</span></h2>
+          <p>Thirty fairy tale pies — savory and sweet, each with a name and a story. For the family table and the celebration — and for a quiet evening when you need a piece of home and a little care, like mom used to give. Happiness in the moment. Memories forever.</p>
+        </div>
+        <span class="section-tag">Weekend markets &amp; Friday Family Night</span>
+      </div>
+
+      <div class="pie-nav" role="group" aria-label="Pie categories">
+        <button class="pie-btn active" data-filter="all" type="button"><span class="disc"><img src="assets/icon-cat-all.png" alt="" /></span><small>All</small></button>
+        <button class="pie-btn" data-filter="sweet" type="button"><span class="disc"><img src="assets/icon-cat-sweet.png" alt="" /></span><small>Sweet</small></button>
+        <button class="pie-btn" data-filter="quiche" type="button"><span class="disc"><img src="assets/icon-cat-quiche-open.png" alt="" /></span><small>Quiches</small></button>
+        <button class="pie-btn" data-filter="sets" type="button"><span class="disc"><img src="assets/icon-cat-sets.png" alt="" /></span><small>Sets</small></button>
+      </div>
+      <h3 class="group-head">Savory quiches</h3>
+      <div class="cards">
+        <article class="card" data-cat="quiche" data-ing="Chicken breast, ham, mushrooms, sour cream, milk, onion, garlic, cheese." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-hansel.jpg" alt="Hansel — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Hansel</h3>
+            </div>
+            <p>Chicken breast, ham and mushrooms in a creamy sauce with melted cheese.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Hansel" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Chicken, mushrooms, onion, cream, egg, cheese." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-gretel.jpg" alt="Gretel — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Gretel</h3>
+            </div>
+            <p>Chicken and mushrooms, golden and simple — the cozy classic.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Gretel" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Beef, potato, quince, onion, herbs." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-leprechaun.jpg" alt="Leprechaun — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Leprechaun</h3>
+            </div>
+            <p>Beef and potato with onion, quince and parsley. A Sunday dinner in a crust.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Leprechaun" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Salmon, spinach, sour cream, cream, egg, cheese." data-allergens="wheat, milk, egg, fish">
+          <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-mermaid.jpg" alt="Mermaid — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Mermaid</h3>
+            </div>
+            <p>Salmon and spinach quiche with cream and cheese.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Mermaid" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Shrimp, mussels, squid, cherry tomatoes, olives, cream, cheese." data-allergens="wheat, milk, egg, shellfish">
+          <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-triton.jpg" alt="Triton — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Triton</h3>
+            </div>
+            <p>Shrimp, mussels and squid with cherry tomatoes, olives and cheese.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Triton" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Beef and pork mince, chili, sweet peppers, corn, cheese." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><span class="badge spicy">🌶 Spicy</span><img src="assets/pie-dragon.jpg" alt="Dragon — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Dragon</h3>
+            </div>
+            <p>Spicy beef with sweet peppers, corn and cheese. It has a kick.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Dragon" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Broccoli, spinach, feta, cream, egg." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-pixie.jpg" alt="Pixie — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Pixie</h3>
+            </div>
+            <p>Broccoli, spinach and brined cheese. No meat, all flavour.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Pixie" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Mozzarella, parmesan and a golden third cheese, tomato, cream." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-miller.jpg" alt="Miller — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Miller</h3>
+            </div>
+            <p>Three cheeses and tomato with cream — mozzarella, parmesan and a golden top.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Miller" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Chicken pieces in a thick golden gravy under a double crust." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-hearth.jpg" alt="Hearth — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Hearth</h3>
+            </div>
+            <p>Moravian chicken in rich gravy under a double crust — our North Carolina neighbour.</p>
+            <div class="card-foot"><span class="card-note">Tartlet 4&Prime;</span></div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Hearth" data-size="Tartlet" data-price="7">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Zucchini, sweet peppers, roasted cherry tomatoes, soft cheese, cream cheese, tarragon, thyme, cream, egg." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-thumbelina.jpg" alt="Thumbelina — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Thumbelina</h3>
+            </div>
+            <p>Zucchini, sweet peppers and roasted cherry tomatoes over soft cheese with tarragon and thyme.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Thumbelina" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Porcini and champignon mushrooms, onion, cream, egg, Gouda, green onion." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-gnome.jpg" alt="Gnome — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Gnome</h3>
+            </div>
+            <p>Wild mushrooms and champignons under a gentle cream glaze with Gouda and green onion.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Gnome" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Slow-braised lamb shoulder, onion, rosemary, thyme, garlic, under a closed crust." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-shepherd.jpg" alt="Shepherd — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Shepherd</h3>
+            </div>
+            <p>Lamb shoulder slow-braised in fragrant herbs, baked under a golden closed crust.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Shepherd" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Potatoes simmered in milk, smoked bacon, Gouda, rosemary, garlic, under a closed crust." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-piglet.jpg" alt="Piglet — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Piglet</h3>
+            </div>
+            <p>Potatoes simmered in milk with rosemary and garlic, Gouda and smoked bacon, in a closed crust.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Piglet" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="quiche" data-ing="Smoked trout, baby potatoes, cream, egg, whole-grain mustard, dill." data-allergens="wheat, milk, egg, fish">
+          <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-undine.jpg" alt="Undine — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Undine</h3>
+            </div>
+            <p>Smoked trout with baby potatoes, whole-grain mustard and dill in a creamy glaze.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Undine" data-size="9 inch pie" data-price="42">Add to cart</button></div>
+          </div>
+        </article>
+        </div>
+      <h3 class="group-head">Sweet pies</h3>
+      <div class="cards">
+        <article class="card" data-cat="sweet" data-ing="Pear, blue cheese, vanilla custard." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-briarose.jpg" alt="Briarose — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Briarose</h3>
+            </div>
+            <p>Pear and blue cheese over soft vanilla custard.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Briarose" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Milk chocolate, cream, cream cheese, cranberry." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-brownie-wide5.jpg" alt="Brownie — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Brownie</h3>
+            </div>
+            <p>Dark chocolate with lingonberry — rich, glossy, barely sweet.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Brownie" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Blueberries, cottage cheese, sour cream." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-bluebell.jpg" alt="Bluebell — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Bluebell</h3>
+            </div>
+            <p>Blueberry with curd cheese and sour cream.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Bluebell" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Sour cherries." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-andersen.jpg" alt="Andersen — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Andersen</h3>
+            </div>
+            <p>Sour cherry under a golden lattice crust.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Andersen" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Real chocolate sponge, apricot jam and glossy chocolate glaze in a shortcrust shell." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-yaga.jpg" alt="Yaga — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Yaga</h3>
+            </div>
+            <p>Very dark chocolate biscuit with apricot jam under a glossy chocolate glaze.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Yaga" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Banana, toffee caramel and cream." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-goldilocks.jpg" alt="Goldilocks — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Goldilocks</h3>
+            </div>
+            <p>Banana and caramel banoffee with whipped cream and chocolate.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Goldilocks" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Black currants and cottage cheese." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-moonberry-v2.jpg" alt="Moonberry — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Moonberry</h3>
+            </div>
+            <p>Blackcurrant with curd — properly tart, deep purple.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Moonberry" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Baked pumpkin and apricot." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-cinderella.jpg" alt="Cinderella — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Cinderella</h3>
+            </div>
+            <p>Baked pumpkin and apricot — golden, soft and honeyed.</p>
+            <div class="card-foot"><span class="card-note">Tartlet 4&Prime;</span></div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Cinderella" data-size="Tartlet" data-price="7">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Poppy seeds and cottage cheese." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-dorothy.jpg" alt="Dorothy — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Dorothy</h3>
+            </div>
+            <p>Poppy seed and curd cheese — creamy and speckled.</p>
+            <div class="card-foot"><span class="card-note">Tartlet 4&Prime;</span></div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Dorothy" data-size="Tartlet" data-price="7">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Stewed apple and lingonberry under a crumble." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-redhood.jpg" alt="Redhood — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Redhood</h3>
+            </div>
+            <p>Stewed apple and lingonberry under a golden crumble.</p>
+            <div class="card-foot"><span class="card-note">Tartlet 4&Prime;</span></div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Redhood" data-size="Tartlet" data-price="7">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Apple, raisins, walnuts and cinnamon." data-allergens="wheat, milk, egg, tree nuts (walnut)">
+          <div class="card-photo"><img src="assets/pie-snowwhite.jpg" alt="Snowwhite — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Snowwhite</h3>
+            </div>
+            <p>Apple, raisin and walnut with cinnamon — a little strudel in a crust.</p>
+            <div class="card-foot"><span class="card-note">Tartlet 4&Prime;</span></div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Snowwhite" data-size="Tartlet" data-price="7">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Sour cherries and Belgian white chocolate." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-rosered.jpg" alt="Rosered — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Rosered</h3>
+            </div>
+            <p>Sour cherries with Belgian white chocolate on a sweet crust.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Rosered" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Cream cheese and soft cottage cheese, strawberries, lime." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-flora.jpg" alt="Flora — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Flora</h3>
+            </div>
+            <p>Cheesecake-soft filling with ripe strawberries and a whisper of lime.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Flora" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Almond frangipane, whole raspberries, ground pistachio." data-allergens="wheat, milk, egg, tree nuts (almond, pistachio)">
+          <div class="card-photo"><img src="assets/pie-titania.jpg" alt="Titania — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Titania</h3>
+            </div>
+            <p>Almond frangipane under whole raspberries and a dusting of ground pistachio.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Titania" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Lemon curd — lemon juice and zest, egg, butter." data-allergens="wheat, milk, egg">
+          <div class="card-photo"><img src="assets/pie-aurora.jpg" alt="Aurora — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Aurora</h3>
+            </div>
+            <p>Bright lemon curd — sweet, with a real citrus bite.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Aurora" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Walnuts in salted caramel between thin layers of crust." data-allergens="wheat, milk, egg, tree nuts (walnut)">
+          <div class="card-photo"><img src="assets/pie-nutcracker.jpg" alt="Nutcracker — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Nutcracker</h3>
+            </div>
+            <p>Walnuts in salted caramel between thin layers of crust.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Nutcracker" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        <article class="card" data-cat="sweet" data-ing="Plums and crushed hazelnuts." data-allergens="wheat, milk, egg, tree nuts (hazelnut)">
+          <div class="card-photo"><img src="assets/pie-sugarplum.jpg" alt="Sugarplum — Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Sugarplum</h3>
+            </div>
+            <p>Plums with crushed hazelnuts — a little winter dance.</p>
+            <div class="card-foot">
+              <span class="card-note">9&Prime; serves 6–8 &middot; tartlet 4&Prime;</span>
+              
+            </div>
+              <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Sugarplum" data-size="9 inch pie" data-price="38">Add to cart</button></div>
+          </div>
+        </article>
+        </div>
+      <h3 class="group-head">Sets</h3>
+      <div class="cards">
+        <article class="card" id="set-nine-feasts" data-cat="sets" data-ing="Nine tartlets, one of each savory tale: Hansel, Gretel, Leprechaun, Mermaid, Triton, Dragon, Pixie, Miller, Hearth." data-allergens="wheat, milk, egg, fish, shellfish">
+          <div class="card-photo"><img src="assets/pie-savory-box.jpg" alt="Nine Feasts — savory tartlet set, Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Nine Feasts</h3>
+            </div>
+            <p>Nine little savory pies: Hansel, Gretel, Leprechaun, Mermaid, Triton, Dragon, Pixie, Miller — plus Hearth, Moravian chicken in gravy, our North Carolina neighbour.</p>
+            <div class="card-foot">
+              <span class="card-note">Nine different pies in one box</span>
+              <button class="btn btn-butter btn-small add-btn" data-name="Nine Feasts" data-size="Box of 9" data-price="54">Add to cart · $54</button>
+            </div>
+          </div>
+        </article>
+        <article class="card" id="set-nine-tales" data-cat="sets" data-ing="Nine tartlets, one of each sweet tale: Briarose, Brownie, Bluebell, Andersen, Moonberry, Cinderella, Dorothy, Redhood, Snowwhite." data-allergens="wheat, milk, egg, tree nuts (walnut)">
+          <div class="card-photo"><img src="assets/pie-sweet-box.jpg" alt="Nine Tales — sweet tartlet set, Marya Pies" loading="lazy" /></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Nine Tales</h3>
+            </div>
+            <p>Nine little sweet pies: Briarose, Brownie, Bluebell, Andersen and Moonberry — plus Cinderella (pumpkin & apricot), Dorothy (poppy seed & curd), Redhood (apple & lingonberry crumble) and Snowwhite (apple strudel with raisin & walnut).</p>
+            <div class="card-foot">
+              <span class="card-note">Nine different pies in one box</span>
+              <button class="btn btn-butter btn-small add-btn" data-name="Nine Tales" data-size="Box of 9" data-price="54">Add to cart · $54</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="pies-footnote">Whole pies are 9 inches across and serve 6–8. Tartlets are 4 inches across — take one, or a box of nine.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
     <h2 class="fn-h">How it works</h2>
     <div class="fn-steps">
       <div class="fn-step"><span class="n">1</span><h3>You pre-register</h3><p>Fill in the form below — no payment now. As soon as we're ready to bake, we call you to confirm your first box.</p></div>
@@ -131,6 +936,7 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
       <div class="fn-step"><span class="n">3</span><h3>Friday, at your door</h3><p>Delivery Friday afternoon across the Triangle. Dinner is done; the family night begins.</p></div>
     </div>
 
+    
     <div class="fn-form" id="subscribe">
       <h2>Join the Pie Club</h2>
       <p class="fp">$75 per week · pause anytime · pre-registration — no payment now</p>
@@ -146,6 +952,7 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
       <div class="fn-ok" id="fnErr" style="color:#FFB3A7">Something went wrong — please try again in a minute.</div>
     </div>
 
+    
     <h2 class="fn-h">Questions</h2>
     <div class="fn-faq">
       <div><b>Can I pause a week?</b><p>Yes — just text us by Wednesday evening and that Friday is skipped, no charge. Cancel anytime the same way.</p></div>
@@ -155,17 +962,54 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
     </div>
 
     <p class="fn-close">Happiness in the moment. Memories are forever.</p>
-    <p style="text-align:center; margin:0 0 10px"><a class="btn btn-cranberry" href="index.html#pies">See all the pies</a></p>
+    <p style="text-align:center; margin:0 0 10px"><a class="btn btn-cranberry" href="#pies">See all the pies</a></p>
   </section>
 </main>
 
-<footer>
+<footer class="fn-footer">
   <div class="wrap footer-in">
     <img src="assets/girl-2.png" alt="Marya Pies logo" />
     <span>Every pie tells a fairy tale</span>
     <a href="index.html">← Back to Marya Pies</a>
   </div>
 </footer>
+
+<div id="pieModal" class="pie-modal" hidden role="dialog" aria-modal="true" aria-label="Pie details">
+  <div class="pie-modal-backdrop" data-close></div>
+  <div class="pie-modal-box">
+    <button class="pie-modal-close" type="button" aria-label="Close">×</button>
+    <div class="pie-modal-photo"><img id="pmImg" alt="" /></div>
+    <div class="pie-modal-body">
+      <h3 id="pmName"></h3>
+      <p id="pmDesc"></p>
+      <div class="pie-modal-facts" id="pmFacts">
+        <div id="pmIng"></div>
+        <div id="pmAllg"></div>
+      </div>
+      <div class="pie-modal-note" id="pmNote"></div>
+      <div class="buy" id="pmBuy"></div>
+    </div>
+  </div>
+</div>
+<button id="cartFab" aria-label="Open cart">🧺 Cart · <span id="cartFabTotal">$0</span></button>
+<div id="cartOverlay"></div>
+<aside id="cartDrawer" aria-label="Your order">
+  <div style="display:flex; justify-content:space-between; align-items:center">
+    <h3>Your order</h3>
+    <button id="cartClose" style="border:none; background:none; font-size:24px; cursor:pointer" aria-label="Close">×</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+  <form class="cart-form" id="cartForm">
+    <input id="cfName" placeholder="Your name *" autocomplete="name" />
+    <input id="cfPhone" type="tel" placeholder="Phone number *" autocomplete="tel" />
+    <input id="cfWhen" placeholder="When do you need it? (e.g. Saturday)" />
+    <textarea id="cfNote" rows="2" placeholder="Anything we should know?"></textarea>
+    <button class="btn btn-cranberry" type="submit" style="width:100%">Send order</button>
+    <p class="cart-note">We will text you back to confirm and share payment details. Pickup at the market, preorders close Friday evening.</p>
+    <div id="cartStatus"></div>
+  </form>
+</aside>
 
 <script>
 document.getElementById('fnForm').addEventListener('submit', async function(e){
@@ -191,6 +1035,196 @@ document.getElementById('fnForm').addEventListener('submit', async function(e){
     btn.disabled=false; btn.textContent='Join — $75/week';
   }
 });
+</script>
+<script>
+    document.querySelectorAll('.pie-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.pie-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.dataset.filter;
+        document.querySelectorAll('#pies .card').forEach(function(c){
+          c.hidden = (f !== 'all' && c.dataset.cat !== f);
+        });
+        document.querySelectorAll('#pies .group-head').forEach(function(h){
+          var grid = h.nextElementSibling, any = false;
+          if (grid) grid.querySelectorAll('.card').forEach(function(c){ if (!c.hidden) any = true; });
+          h.hidden = !any;
+        });
+      });
+    });
+
+    
+  
+    (function(){
+      var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var COLORS = ['#FFEDDD','#F0CB81','#E9BC72','#FFF6E8'];
+      var layer = null;
+      function getLayer(){
+        if(!layer){ layer = document.createElement('div'); layer.className = 'crumb-layer'; document.body.appendChild(layer); }
+        return layer;
+      }
+      function crumbs(btn){
+        if(RM || !btn.animate) return;
+        var r = btn.getBoundingClientRect();
+        var x = r.right - 3, y = r.top + r.height / 2, L = getLayer();
+        for(var i = 0; i < 7; i++){
+          var s = document.createElement('span');
+          s.className = 'crumb';
+          var sz = 3 + Math.random() * 3.5;
+          s.style.width = sz + 'px';
+          s.style.height = (sz * (0.7 + Math.random() * 0.5)) + 'px';
+          s.style.left = x + 'px';
+          s.style.top = y + 'px';
+          s.style.background = COLORS[(Math.random() * COLORS.length) | 0];
+          L.appendChild(s);
+          var dx = 10 + Math.random() * 26, dy = Math.random() * 36 - 18, rot = Math.random() * 260 - 130;
+          var anim = s.animate([
+            { transform: 'translate(-50%,-50%) rotate(0deg)', opacity: 1 },
+            { transform: 'translate(calc(-50% + ' + dx + 'px), calc(-50% + ' + dy + 'px)) rotate(' + rot + 'deg)', opacity: 0 }
+          ], { duration: 430 + Math.random() * 180, easing: 'cubic-bezier(.17,.67,.35,1)' });
+          anim.onfinish = (function(el){ return function(){ el.remove(); }; })(s);
+        }
+      }
+      document.querySelectorAll('.btn-bite').forEach(function(btn){
+        btn.addEventListener('mouseenter', function(){ crumbs(btn); });
+        var last = 0;
+        btn.addEventListener('pointerdown', function(e){
+          if(e.pointerType === 'mouse') return;
+          var now = Date.now(); if(now - last < 350) return; last = now;
+          btn.classList.add('bitten'); crumbs(btn);
+          setTimeout(function(){ btn.classList.remove('bitten'); }, 650);
+        });
+      });
+    })();
+  </script>
+<script>
+(function(){
+  var cart={};
+  try{ cart=JSON.parse(localStorage.getItem('mp_cart')||'{}'); }catch(e){ cart={}; }
+  var fab=document.getElementById('cartFab'), drawer=document.getElementById('cartDrawer'), overlay=document.getElementById('cartOverlay');
+  function save(){ localStorage.setItem('mp_cart', JSON.stringify(cart)); }
+  function totals(){ var n=0,t=0; for(var k in cart){ n+=cart[k].qty; t+=cart[k].qty*cart[k].price; } return {n:n,t:t}; }
+  function render(){
+    var box=document.getElementById('cartItems'); box.innerHTML='';
+    var keys=Object.keys(cart);
+    if(!keys.length){ box.innerHTML='<p class="cart-note">Your cart is empty — add a pie you like.</p>'; }
+    keys.forEach(function(k){ var it=cart[k];
+      var row=document.createElement('div'); row.className='cart-item';
+      row.innerHTML='<div><b></b><br><small></small></div>';
+      row.querySelector('b').textContent=it.name;
+      row.querySelector('small').textContent=it.size+' · $'+it.price;
+      var q=document.createElement('div'); q.className='qty';
+      q.innerHTML='<button aria-label="minus">−</button><span>'+it.qty+'</span><button aria-label="plus">+</button>';
+      q.children[0].onclick=function(){ it.qty--; if(it.qty<=0) delete cart[k]; save(); render(); };
+      q.children[2].onclick=function(){ it.qty++; save(); render(); };
+      row.appendChild(q); box.appendChild(row);
+    });
+    var tt=totals();
+    document.getElementById('cartTotal').textContent='$'+tt.t;
+    document.getElementById('cartFabTotal').textContent='$'+tt.t;
+    fab.classList.toggle('show', tt.n>0);
+  }
+  document.querySelectorAll('.card').forEach(function(card){
+    var add=card.querySelector('.add-btn'); if(!add) return;
+    card.querySelectorAll('.sz').forEach(function(sz){
+      sz.addEventListener('click', function(){
+        card.querySelectorAll('.sz').forEach(function(x){ x.classList.remove('active'); });
+        sz.classList.add('active');
+        add.dataset.size=sz.dataset.size; add.dataset.price=sz.dataset.price;
+      });
+    });
+    add.addEventListener('click', function(){
+      var key=add.dataset.name+'|'+add.dataset.size;
+      if(!cart[key]) cart[key]={name:add.dataset.name, size:add.dataset.size, price:+add.dataset.price, qty:0};
+      cart[key].qty++; save(); render();
+      add.textContent='Added ✓'; setTimeout(function(){ add.textContent = add.dataset.size==='Box of 9' ? 'Add to cart · $54' : 'Add to cart'; }, 1200);
+    });
+  });
+  function openCart(){ drawer.classList.add('open'); overlay.classList.add('open'); }
+  function closeCart(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+  fab.addEventListener('click', openCart);
+  overlay.addEventListener('click', closeCart);
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  document.getElementById('cartForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var name=document.getElementById('cfName').value.trim();
+    var phone=document.getElementById('cfPhone').value.trim();
+    var status=document.getElementById('cartStatus');
+    var items=Object.keys(cart).map(function(k){ return cart[k]; });
+    if(!items.length){ status.textContent='Your cart is empty.'; return; }
+    if(!name){ status.textContent='Please add your name.'; return; }
+    if(phone.replace(/\D/g,'').length<7){ status.textContent='Please add a valid phone number — we will text you to confirm.'; return; }
+    status.textContent='Sending…';
+    fetch('/api/order', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      name:name, phone:phone,
+      when:document.getElementById('cfWhen').value.trim(),
+      note:document.getElementById('cfNote').value.trim(),
+      items:items, total:totals().t
+    })}).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      if(res.ok){ status.textContent='Order sent! We will text you back very soon.'; cart={}; save(); render(); }
+      else { status.textContent='Hmm, sending failed — please try again in a minute.'; }
+    }).catch(function(){ status.textContent='Hmm, sending failed — please try again in a minute.'; });
+  });
+  render();
+})();
+</script>
+<script>
+(function(){
+  var modal=document.getElementById('pieModal'); if(!modal) return;
+  var img=document.getElementById('pmImg'), nameEl=document.getElementById('pmName'),
+      descEl=document.getElementById('pmDesc'), noteEl=document.getElementById('pmNote'),
+      buyEl=document.getElementById('pmBuy'), currentCard=null;
+  function syncSizes(){
+    if(!currentCard) return;
+    var real=currentCard.querySelectorAll('.sz'), proxy=buyEl.querySelectorAll('.sz');
+    real.forEach(function(r,i){ if(proxy[i]) proxy[i].classList.toggle('active', r.classList.contains('active')); });
+  }
+  function open(card){
+    currentCard=card;
+    var photo=card.querySelector('.card-photo img');
+    if(photo){ img.src=photo.currentSrc||photo.src; img.alt=photo.alt||''; }
+    var h=card.querySelector('h3'); nameEl.textContent=h?h.textContent:'';
+    var p=card.querySelector('.card-body p'); descEl.textContent=p?p.textContent:'';
+    var note=card.querySelector('.card-note');
+    noteEl.textContent=note?note.textContent:''; noteEl.style.display=note?'':'none';
+    var facts=document.getElementById('pmFacts');
+    var ing=card.getAttribute('data-ing'), alg=card.getAttribute('data-allergens');
+    document.getElementById('pmIng').innerHTML=ing?'<b>What\'s inside:</b> '+ing:'';
+    document.getElementById('pmAllg').innerHTML=alg?'<b>Contains:</b> '+alg:'';
+    facts.style.display=(ing||alg)?'':'none';
+    buyEl.innerHTML='';
+    var add=card.querySelector('.add-btn');
+    if(add){
+      var wrap=document.createElement('div'); wrap.className='sizes';
+      card.querySelectorAll('.sz').forEach(function(sz){
+        var b=document.createElement('button'); b.type='button';
+        b.className='sz'+(sz.classList.contains('active')?' active':''); b.textContent=sz.textContent;
+        b.addEventListener('click', function(){ sz.click(); syncSizes(); });
+        wrap.appendChild(b);
+      });
+      buyEl.appendChild(wrap);
+      var addBtn=document.createElement('button'); addBtn.type='button';
+      addBtn.className='btn btn-cranberry btn-small'; addBtn.textContent='Add to cart';
+      addBtn.addEventListener('click', function(){
+        add.click(); addBtn.textContent='Added ✓';
+        setTimeout(function(){ addBtn.textContent='Add to cart'; },1200);
+      });
+      buyEl.appendChild(addBtn);
+    }
+    modal.hidden=false; document.body.style.overflow='hidden';
+  }
+  function close(){ modal.hidden=true; document.body.style.overflow=''; currentCard=null; }
+  document.querySelectorAll('.card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('.buy')||e.target.closest('button')||e.target.closest('a')) return;
+      open(card);
+    });
+  });
+  modal.querySelector('[data-close]').addEventListener('click', close);
+  modal.querySelector('.pie-modal-close').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&!modal.hidden) close(); });
+})();
 </script>
 </body>
 </html>
