@@ -328,6 +328,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
 .pie-modal-body h3{font-family:"Monomakh",serif; font-weight:400; font-size:31px; line-height:1.05; margin:0; color:var(--cherry)}
 .pie-modal-body p{color:var(--ink-soft); font-size:15.5px; line-height:1.6; margin:10px 0 0}
 .pie-modal-note{margin-top:16px; padding-top:13px; border-top:1px dashed var(--line); font-size:13px; font-weight:700; color:var(--cherry)}
+.pie-modal-facts{margin-top:13px; font-size:12.5px; line-height:1.55; color:var(--ink-soft)}
+.pie-modal-facts b{color:var(--cherry); font-weight:800}
+.pie-modal-facts div+div{margin-top:3px}
 .pie-modal .buy{margin-top:14px}
 .card .card-photo{cursor:pointer}
 </style>
@@ -386,7 +389,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
       </div>
       <h3 class="group-head">Savory quiches</h3>
       <div class="cards">
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Chicken breast, ham, mushrooms, sour cream, milk, onion, garlic, cheese." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-hansel.jpg" alt="Hansel — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -400,7 +403,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Hansel" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Chicken, mushrooms, onion, cream, egg, cheese." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-gretel.jpg" alt="Gretel — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -414,7 +417,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Gretel" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Beef, potato, quince, onion, herbs." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-leprechaun.jpg" alt="Leprechaun — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -428,7 +431,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Leprechaun" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Salmon, spinach, sour cream, cream, egg, cheese." data-allergens="wheat, milk, egg, fish">
           <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-mermaid.jpg" alt="Mermaid — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -442,7 +445,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Mermaid" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Shrimp, mussels, squid, cherry tomatoes, olives, cream, cheese." data-allergens="wheat, milk, egg, shellfish">
           <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-triton.jpg" alt="Triton — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -456,7 +459,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Triton" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Beef and pork mince, chili, sweet peppers, corn, cheese." data-allergens="wheat, milk, egg">
           <div class="card-photo"><span class="badge spicy">🌶 Spicy</span><img src="assets/pie-dragon.jpg" alt="Dragon — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -470,7 +473,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Dragon" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Broccoli, spinach, feta, cream, egg." data-allergens="wheat, milk, egg">
           <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-pixie.jpg" alt="Pixie — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -484,7 +487,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Pixie" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Mozzarella, parmesan and a golden third cheese, tomato, cream." data-allergens="wheat, milk, egg">
           <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-miller.jpg" alt="Miller — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -498,7 +501,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Miller" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Chicken pieces in a thick golden gravy under a double crust." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-hearth.jpg" alt="Hearth — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -509,7 +512,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Hearth" data-size="Tartlet" data-price="7">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Zucchini, sweet peppers, roasted cherry tomatoes, soft cheese, cream cheese, tarragon, thyme, cream, egg." data-allergens="wheat, milk, egg">
           <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-thumbelina.jpg" alt="Thumbelina — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -523,7 +526,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Thumbelina" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Porcini and champignon mushrooms, onion, cream, egg, Gouda, green onion." data-allergens="wheat, milk, egg">
           <div class="card-photo"><span class="badge veg">Vegetarian</span><img src="assets/pie-gnome.jpg" alt="Gnome — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -537,7 +540,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Gnome" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Slow-braised lamb shoulder, onion, rosemary, thyme, garlic, under a closed crust." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-shepherd.jpg" alt="Shepherd — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -551,7 +554,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Shepherd" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Potatoes simmered in milk, smoked bacon, Gouda, rosemary, garlic, under a closed crust." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-piglet.jpg" alt="Piglet — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -565,7 +568,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="42">9&Prime; &middot; $42</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Piglet" data-size="9 inch pie" data-price="42">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="quiche">
+        <article class="card" data-cat="quiche" data-ing="Smoked trout, baby potatoes, cream, egg, whole-grain mustard, dill." data-allergens="wheat, milk, egg, fish">
           <div class="card-photo"><span class="badge sea">Seafood</span><img src="assets/pie-undine.jpg" alt="Undine — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -582,7 +585,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
         </div>
       <h3 class="group-head">Sweet pies</h3>
       <div class="cards">
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Pear, blue cheese, vanilla custard." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-briarose.jpg" alt="Briarose — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -596,7 +599,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Briarose" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Milk chocolate, cream, cream cheese, cranberry." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-brownie-wide5.jpg" alt="Brownie — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -610,7 +613,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Brownie" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Blueberries, cottage cheese, sour cream." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-bluebell.jpg" alt="Bluebell — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -624,7 +627,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Bluebell" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Sour cherries." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-andersen.jpg" alt="Andersen — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -638,7 +641,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Andersen" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Real chocolate sponge, apricot jam and glossy chocolate glaze in a shortcrust shell." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-yaga.jpg" alt="Yaga — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -652,7 +655,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Yaga" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Banana, toffee caramel and cream." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-goldilocks.jpg" alt="Goldilocks — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -666,7 +669,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Goldilocks" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Black currants and cottage cheese." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-moonberry-v2.jpg" alt="Moonberry — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -680,7 +683,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Moonberry" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Baked pumpkin and apricot." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-cinderella.jpg" alt="Cinderella — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -691,7 +694,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Cinderella" data-size="Tartlet" data-price="7">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Poppy seeds and cottage cheese." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-dorothy.jpg" alt="Dorothy — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -702,7 +705,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Dorothy" data-size="Tartlet" data-price="7">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Stewed apple and lingonberry under a crumble." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-redhood.jpg" alt="Redhood — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -713,7 +716,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Redhood" data-size="Tartlet" data-price="7">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Apple, raisins, walnuts and cinnamon." data-allergens="wheat, milk, egg, tree nuts (walnut)">
           <div class="card-photo"><img src="assets/pie-snowwhite.jpg" alt="Snowwhite — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -724,7 +727,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Snowwhite" data-size="Tartlet" data-price="7">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Sour cherries and Belgian white chocolate." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-rosered.jpg" alt="Rosered — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -738,7 +741,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Rosered" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Cream cheese and soft cottage cheese, strawberries, lime." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-flora.jpg" alt="Flora — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -752,7 +755,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Flora" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Almond frangipane, whole raspberries, ground pistachio." data-allergens="wheat, milk, egg, tree nuts (almond, pistachio)">
           <div class="card-photo"><img src="assets/pie-titania.jpg" alt="Titania — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -766,7 +769,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Titania" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Lemon curd — lemon juice and zest, egg, butter." data-allergens="wheat, milk, egg">
           <div class="card-photo"><img src="assets/pie-aurora.jpg" alt="Aurora — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -780,7 +783,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Aurora" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Walnuts in salted caramel between thin layers of crust." data-allergens="wheat, milk, egg, tree nuts (walnut)">
           <div class="card-photo"><img src="assets/pie-nutcracker.jpg" alt="Nutcracker — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -794,7 +797,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
               <div class="buy"><div class="sizes"><button class="sz active" data-size="9 inch pie" data-price="38">9&Prime; &middot; $38</button><button class="sz" data-size="Tartlet" data-price="7">Tartlet &middot; $7</button><button class="sz" data-size="Box of 9 tartlets" data-price="54">Box of 9 &middot; $54</button></div><button class="btn btn-cranberry btn-small add-btn" data-name="Nutcracker" data-size="9 inch pie" data-price="38">Add to cart</button></div>
           </div>
         </article>
-        <article class="card" data-cat="sweet">
+        <article class="card" data-cat="sweet" data-ing="Plums and crushed hazelnuts." data-allergens="wheat, milk, egg, tree nuts (hazelnut)">
           <div class="card-photo"><img src="assets/pie-sugarplum.jpg" alt="Sugarplum — Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -811,7 +814,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
         </div>
       <h3 class="group-head">Sets</h3>
       <div class="cards">
-        <article class="card" id="set-nine-feasts" data-cat="sets">
+        <article class="card" id="set-nine-feasts" data-cat="sets" data-ing="Nine tartlets, one of each savory tale: Hansel, Gretel, Leprechaun, Mermaid, Triton, Dragon, Pixie, Miller, Hearth." data-allergens="wheat, milk, egg, fish, shellfish">
           <div class="card-photo"><img src="assets/pie-savory-box.jpg" alt="Nine Feasts — savory tartlet set, Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -824,7 +827,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
             </div>
           </div>
         </article>
-        <article class="card" id="set-nine-tales" data-cat="sets">
+        <article class="card" id="set-nine-tales" data-cat="sets" data-ing="Nine tartlets, one of each sweet tale: Briarose, Brownie, Bluebell, Andersen, Moonberry, Cinderella, Dorothy, Redhood, Snowwhite." data-allergens="wheat, milk, egg, tree nuts (walnut)">
           <div class="card-photo"><img src="assets/pie-sweet-box.jpg" alt="Nine Tales — sweet tartlet set, Marya Pies" loading="lazy" /></div>
           <div class="card-body">
             <div class="card-top">
@@ -980,6 +983,10 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     <div class="pie-modal-body">
       <h3 id="pmName"></h3>
       <p id="pmDesc"></p>
+      <div class="pie-modal-facts" id="pmFacts">
+        <div id="pmIng"></div>
+        <div id="pmAllg"></div>
+      </div>
       <div class="pie-modal-note" id="pmNote"></div>
       <div class="buy" id="pmBuy"></div>
     </div>
@@ -1096,6 +1103,11 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     var p=card.querySelector('.card-body p'); descEl.textContent=p?p.textContent:'';
     var note=card.querySelector('.card-note');
     noteEl.textContent=note?note.textContent:''; noteEl.style.display=note?'':'none';
+    var facts=document.getElementById('pmFacts');
+    var ing=card.getAttribute('data-ing'), alg=card.getAttribute('data-allergens');
+    document.getElementById('pmIng').innerHTML=ing?'<b>What\'s inside:</b> '+ing:'';
+    document.getElementById('pmAllg').innerHTML=alg?'<b>Contains:</b> '+alg:'';
+    facts.style.display=(ing||alg)?'':'none';
     buyEl.innerHTML='';
     var add=card.querySelector('.add-btn');
     if(add){
