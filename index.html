@@ -343,6 +343,13 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
 .top-btns{grid-column:3; justify-self:end; display:flex; gap:8px; align-items:center}
 .btn-outline{border:1.5px solid var(--butter); color:var(--butter); background:transparent}
 .btn-outline:hover{background:rgba(240,203,129,.14)}
+
+/* sets cards: stack note and button so the button never clips (mobile 2-col) */
+@media(max-width:819px){
+  .card[data-cat="sets"] .card-foot{flex-direction:column; align-items:stretch; gap:8px}
+  .card[data-cat="sets"] .card-note{white-space:normal}
+  .card[data-cat="sets"] .add-btn{width:100%}
+}
 </style>
 
 </head>
@@ -885,7 +892,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
           <div class="fact"><b><span class="sr-only">Small batches</span><span aria-hidden="true">Ѕmаll bаtсhеѕ</span></b><span>Baked in the morning, sold the same day.</span></div>
           <div class="fact"><b><span class="sr-only">Real butter</span><span aria-hidden="true">Rеаl buttеr</span></b><span>In the crust, on top, no substitutes.</span></div>
         </div>
-        <a class="btn btn-butter btn-small" href="#pies">Preorder</a>
+        <a class="btn btn-cranberry btn-small" href="#pies">Preorder</a>
       </div>
     </div>
   <div class="marquee" aria-hidden="true">
