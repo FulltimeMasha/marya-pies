@@ -315,6 +315,21 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
   .card .btn-small{padding:8px 12px; font-size:12.5px}
   .section-tag{white-space:normal; text-align:center; line-height:1.5}
 }
+
+/* pie popup */
+.pie-modal{position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; padding:14px}
+.pie-modal[hidden]{display:none}
+.pie-modal-backdrop{position:absolute; inset:0; background:rgba(43,4,10,.55)}
+.pie-modal-box{position:relative; background:var(--cream-2); border-radius:24px; overflow:hidden; width:min(520px,100%); max-height:92dvh; overflow-y:auto; box-shadow:0 24px 60px rgba(43,4,10,.45)}
+.pie-modal-photo{aspect-ratio:4/3; background:#EAD9C8}
+.pie-modal-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.pie-modal-close{position:absolute; top:10px; right:10px; z-index:2; width:38px; height:38px; border-radius:50%; border:none; background:rgba(255,251,242,.94); color:var(--cherry); font-size:22px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(43,4,10,.25)}
+.pie-modal-body{padding:20px 22px 24px}
+.pie-modal-body h3{font-family:"Monomakh",serif; font-weight:400; font-size:31px; line-height:1.05; margin:0; color:var(--cherry)}
+.pie-modal-body p{color:var(--ink-soft); font-size:15.5px; line-height:1.6; margin:10px 0 0}
+.pie-modal-note{margin-top:16px; padding-top:13px; border-top:1px dashed var(--line); font-size:13px; font-weight:700; color:var(--cherry)}
+.pie-modal .buy{margin-top:14px}
+.card .card-photo{cursor:pointer}
 </style>
 
 </head>
@@ -803,6 +818,19 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     })();
   </script>
 
+<div id="pieModal" class="pie-modal" hidden role="dialog" aria-modal="true" aria-label="Pie details">
+  <div class="pie-modal-backdrop" data-close></div>
+  <div class="pie-modal-box">
+    <button class="pie-modal-close" type="button" aria-label="Close">×</button>
+    <div class="pie-modal-photo"><img id="pmImg" alt="" /></div>
+    <div class="pie-modal-body">
+      <h3 id="pmName"></h3>
+      <p id="pmDesc"></p>
+      <div class="pie-modal-note" id="pmNote"></div>
+      <div class="buy" id="pmBuy"></div>
+    </div>
+  </div>
+</div>
 <button id="cartFab" aria-label="Open cart">🧺 Cart · <span id="cartFabTotal">$0</span></button>
 <div id="cartOverlay"></div>
 <aside id="cartDrawer" aria-label="Your order">
@@ -893,6 +921,58 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     }).catch(function(){ status.textContent='Hmm, sending failed — please try again in a minute.'; });
   });
   render();
+})();
+</script>
+<script>
+(function(){
+  var modal=document.getElementById('pieModal'); if(!modal) return;
+  var img=document.getElementById('pmImg'), nameEl=document.getElementById('pmName'),
+      descEl=document.getElementById('pmDesc'), noteEl=document.getElementById('pmNote'),
+      buyEl=document.getElementById('pmBuy'), currentCard=null;
+  function syncSizes(){
+    if(!currentCard) return;
+    var real=currentCard.querySelectorAll('.sz'), proxy=buyEl.querySelectorAll('.sz');
+    real.forEach(function(r,i){ if(proxy[i]) proxy[i].classList.toggle('active', r.classList.contains('active')); });
+  }
+  function open(card){
+    currentCard=card;
+    var photo=card.querySelector('.card-photo img');
+    if(photo){ img.src=photo.currentSrc||photo.src; img.alt=photo.alt||''; }
+    var h=card.querySelector('h3'); nameEl.textContent=h?h.textContent:'';
+    var p=card.querySelector('.card-body p'); descEl.textContent=p?p.textContent:'';
+    var note=card.querySelector('.card-note');
+    noteEl.textContent=note?note.textContent:''; noteEl.style.display=note?'':'none';
+    buyEl.innerHTML='';
+    var add=card.querySelector('.add-btn');
+    if(add){
+      var wrap=document.createElement('div'); wrap.className='sizes';
+      card.querySelectorAll('.sz').forEach(function(sz){
+        var b=document.createElement('button'); b.type='button';
+        b.className='sz'+(sz.classList.contains('active')?' active':''); b.textContent=sz.textContent;
+        b.addEventListener('click', function(){ sz.click(); syncSizes(); });
+        wrap.appendChild(b);
+      });
+      buyEl.appendChild(wrap);
+      var addBtn=document.createElement('button'); addBtn.type='button';
+      addBtn.className='btn btn-cranberry btn-small'; addBtn.textContent='Add to cart';
+      addBtn.addEventListener('click', function(){
+        add.click(); addBtn.textContent='Added ✓';
+        setTimeout(function(){ addBtn.textContent='Add to cart'; },1200);
+      });
+      buyEl.appendChild(addBtn);
+    }
+    modal.hidden=false; document.body.style.overflow='hidden';
+  }
+  function close(){ modal.hidden=true; document.body.style.overflow=''; currentCard=null; }
+  document.querySelectorAll('.card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('.buy')||e.target.closest('button')||e.target.closest('a')) return;
+      open(card);
+    });
+  });
+  modal.querySelector('[data-close]').addEventListener('click', close);
+  modal.querySelector('.pie-modal-close').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&!modal.hidden) close(); });
 })();
 </script>
 </body>
