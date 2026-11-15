@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preload" href="fonts/Monomakh-Regular.ttf" as="font" type="font/ttf" crossorigin />
+<title>Family Night — Marya Pies subscription</title>
+<meta name="description" content="Every Friday: two big Marya Pies — one savory, one sweet — baked in the morning and delivered to your door. $75/week, pause anytime." />
+<style>
+@font-face{
+  font-family:"Monomakh";
+  src:url("fonts/Monomakh-Regular.woff2") format("woff2"), url("fonts/Monomakh-Regular.ttf") format("truetype");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+:root{
+  --cranberry:#A41231; --cherry:#631218; --cherry-deep:#4A0D11;
+  --cream:#FFF3EA; --cream-2:#FFFBF6; --butter:#F0CB81; --butter-soft:#F7DCA6;
+  --ink:#2B1214; --ink-soft:#6B4A4D; --line:rgba(99,18,24,.12);
+  --shadow-card:0 10px 30px rgba(99,18,24,.10), 0 2px 8px rgba(99,18,24,.06);
+}
+*{box-sizing:border-box; font-family:"Monomakh", Georgia, serif}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--cream); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.55}
+img{display:block; max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px, calc(100% - 40px)); margin:0 auto}
+.topbar{background:var(--cherry); color:var(--cream); position:sticky; top:0; z-index:50; border-bottom:1px solid rgba(240,203,129,.22)}
+.topbar-inner{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:12px 0}
+.wordmark{grid-column:2; font-size:clamp(25px,6vw,46px); line-height:1; letter-spacing:.03em; text-align:center; color:#FFF6EC; text-decoration:none; white-space:nowrap}
+.nav{grid-column:1; justify-self:start; display:flex; gap:14px; font-size:13.5px; font-weight:600; white-space:nowrap}
+.nav a{text-decoration:none; color:#FFEEDD; opacity:.92}
+.nav a:hover{opacity:1; color:var(--butter)}
+.topbar .btn{grid-column:3; justify-self:end}
+@media(max-width:700px){.nav{display:none}}
+.btn{display:inline-block; text-decoration:none; border:none; cursor:pointer; border-radius:999px; padding:14px 26px; font-size:16px; font-weight:700; text-align:center}
+.btn-butter{background:var(--butter); color:var(--cherry-deep)}
+.btn-butter:hover{background:var(--butter-soft)}
+.btn-cranberry{background:var(--cranberry); color:#FFF6EC}
+.btn-small{padding:8px 13px; font-size:13px; white-space:nowrap}
+.fn-hero{padding:56px 0 30px; text-align:center}
+.fn-eyebrow{display:inline-block; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--cranberry); font-weight:700; border:1px solid var(--line); border-radius:999px; padding:6px 14px; background:var(--cream-2)}
+.fn-hero h1{font-size:clamp(38px,7.5vw,64px); line-height:1.05; margin:18px 0 10px; color:var(--cherry); font-weight:400}
+.fn-hero .lead{font-size:clamp(19px,3.4vw,26px); color:var(--ink); max-width:640px; margin:0 auto 12px}
+.fn-hero .sub{font-size:16.5px; color:var(--ink-soft); max-width:600px; margin:0 auto}
+.fn-price{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:26px 0 6px}
+.fn-price span{background:var(--cream-2); border:1px solid var(--line); border-radius:999px; padding:9px 18px; font-size:15.5px; box-shadow:var(--shadow-card)}
+.fn-price b{color:var(--cranberry)}
+.fn-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:34px 0}
+@media(max-width:820px){.fn-grid{grid-template-columns:1fr}}
+.fn-card{background:var(--cream-2); border:1px solid var(--line); border-radius:20px; padding:24px 22px; box-shadow:var(--shadow-card)}
+.fn-card .ic{font-size:30px; margin-bottom:8px}
+.fn-card h3{margin:0 0 6px; font-size:21px; color:var(--cherry); font-weight:400}
+.fn-card p{margin:0; font-size:15.5px; color:var(--ink-soft)}
+.fn-steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:10px 0 34px}
+@media(max-width:820px){.fn-steps{grid-template-columns:1fr}}
+.fn-step{text-align:center; padding:10px}
+.fn-step .n{display:inline-flex; width:40px; height:40px; border-radius:50%; background:var(--cherry); color:var(--butter); align-items:center; justify-content:center; font-size:19px; margin-bottom:8px}
+.fn-step h3{margin:0 0 4px; font-size:19px; color:var(--cherry); font-weight:400}
+.fn-step p{margin:0; font-size:15px; color:var(--ink-soft)}
+.fn-h{font-size:clamp(26px,4.5vw,36px); color:var(--cherry); font-weight:400; text-align:center; margin:38px 0 6px}
+.fn-form{background:var(--cherry); color:var(--cream); border-radius:28px; padding:34px 28px; margin:20px 0 44px}
+.fn-form h2{margin:0 0 4px; font-size:clamp(26px,4.5vw,34px); font-weight:400; color:#FFF6EC; text-align:center}
+.fn-form .fp{text-align:center; color:#FFEEDD; opacity:.9; margin:0 0 20px; font-size:16px}
+.fn-form form{display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:640px; margin:0 auto}
+@media(max-width:640px){.fn-form form{grid-template-columns:1fr}}
+.fn-form input,.fn-form textarea{width:100%; border:1px solid rgba(240,203,129,.35); background:#FFF9F1; border-radius:14px; padding:13px 15px; font-size:16px; color:var(--ink)}
+.fn-form textarea{grid-column:1/-1}
+.fn-form button{grid-column:1/-1; justify-self:center; min-width:min(320px,100%)}
+.fn-ok{display:none; text-align:center; font-size:18px; color:var(--butter); padding:10px 0 2px}
+.fn-faq{max-width:760px; margin:0 auto 10px}
+.fn-faq div{border-top:1px solid var(--line); padding:14px 4px}
+.fn-faq b{color:var(--cherry); font-size:16.5px}
+.fn-faq p{margin:3px 0 0; color:var(--ink-soft); font-size:15.5px}
+.fn-close{text-align:center; font-size:19px; color:var(--cherry); margin:36px 0 8px}
+footer{background:var(--cherry-deep); color:#FFEEDD; padding:30px 0; margin-top:44px}
+.footer-in{display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+footer img{width:52px; height:52px; border-radius:50%}
+footer a{color:var(--butter); text-decoration:none; font-weight:700}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#pies">Pies</a>
+      <a href="subscription.html">Family Night</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#find-us">Find Us</a>
+    </nav>
+    <a class="wordmark" href="index.html" aria-label="Marya Pies — home">MARYA PIES</a>
+    <a class="btn btn-butter btn-small" href="#subscribe">Subscribe</a>
+  </div>
+</header>
+
+<main>
+  <section class="fn-hero wrap">
+    <span class="fn-eyebrow">Marya Pies · Weekly subscription</span>
+    <h1>Friday Family Night</h1>
+    <p class="lead">We sell Friday — the night the whole family is home.</p>
+    <p class="sub">Every Friday, two big pies arrive at your door: one savory, one sweet. Baked that same morning. No cooking, no pile of dishes — just everyone at the table, and the evening is yours.</p>
+    <div class="fn-price">
+      <span><b>$75</b> / week</span>
+      <span><b>$300</b> / month · 4 Fridays</span>
+      <span>Pause or cancel <b>anytime</b></span>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="fn-grid">
+      <div class="fn-card">
+        <div class="ic">🥧</div>
+        <h3>Two pies, new tales weekly</h3>
+        <p>One savory + one sweet big pie (9&Prime;, serves 6–8). We rotate the flavors across the whole menu, so every Friday tastes different — Gretel and Brownie this week, Dragon and Andersen the next.</p>
+      </div>
+      <div class="fn-card">
+        <div class="ic">📖</div>
+        <h3>The tale of the week</h3>
+        <p>Every box carries a fairy-tale card for the pie of the week. Collect them all — the whole set of Marya's Tales, one Friday at a time.</p>
+      </div>
+      <div class="fn-card">
+        <div class="ic">🎲</div>
+        <h3>A game &amp; a coloring page</h3>
+        <p>Also in the box: a family game idea for the evening and a coloring page from the tale — so the night continues after the last slice.</p>
+      </div>
+    </div>
+
+    <h2 class="fn-h">How it works</h2>
+    <div class="fn-steps">
+      <div class="fn-step"><span class="n">1</span><h3>You subscribe</h3><p>Fill in the form below. We call you back to confirm the details — no prepayment for the month, you pay week by week.</p></div>
+      <div class="fn-step"><span class="n">2</span><h3>We bake Friday morning</h3><p>Your two pies are baked fresh on Friday — never frozen, never yesterday's.</p></div>
+      <div class="fn-step"><span class="n">3</span><h3>Friday, at your door</h3><p>Delivery Friday afternoon across the Triangle. Dinner is done; the family night begins.</p></div>
+    </div>
+
+    <div class="fn-form" id="subscribe">
+      <h2>Start your Family Night</h2>
+      <p class="fp">$75 per week · first box this Friday · pause anytime</p>
+      <form id="fnForm">
+        <input id="fnName" placeholder="Your name *" autocomplete="name" />
+        <input id="fnPhone" type="tel" placeholder="Phone number *" autocomplete="tel" />
+        <input id="fnAddr" placeholder="Delivery address *" autocomplete="street-address" style="grid-column:1/-1" />
+        <textarea id="fnNote" rows="2" placeholder="Allergies, flavors you love or don't — tell us"></textarea>
+        <button class="btn btn-butter" type="submit" id="fnBtn">Subscribe — $75/week</button>
+      </form>
+      <div class="fn-ok" id="fnOk">Thank you! Your Family Night is requested — Marya will call you to confirm your first Friday. 🥧</div>
+      <div class="fn-ok" id="fnErr" style="color:#FFB3A7">Something went wrong — please try again in a minute.</div>
+    </div>
+
+    <h2 class="fn-h">Questions</h2>
+    <div class="fn-faq">
+      <div><b>Can I pause a week?</b><p>Yes — just text us by Wednesday evening and that Friday is skipped, no charge. Cancel anytime the same way.</p></div>
+      <div><b>Where do you deliver?</b><p>Across the Raleigh–Durham–Cary area (the Triangle), Friday afternoons. Outside the area? Ask us — we often find a way.</p></div>
+      <div><b>We have allergies. Can we still subscribe?</b><p>Yes. Tell us in the form and we rotate your flavors around them. Every pie's ingredients and allergens are listed on its card on the pies page.</p></div>
+      <div><b>Can I choose the flavors?</b><p>The rotation is ours — that's the fun of it. But tell us your loves and no-gos, and we plan your Fridays around them.</p></div>
+    </div>
+
+    <p class="fn-close">Happiness in the moment. Memories are forever.</p>
+    <p style="text-align:center; margin:0 0 10px"><a class="btn btn-cranberry" href="index.html#pies">See all the pies</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-in">
+    <img src="assets/girl-2.png" alt="Marya Pies logo" />
+    <span>Every pie tells a fairy tale</span>
+    <a href="index.html">← Back to Marya Pies</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('fnForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var name=document.getElementById('fnName').value.trim();
+  var phone=document.getElementById('fnPhone').value.trim();
+  var addr=document.getElementById('fnAddr').value.trim();
+  var note=document.getElementById('fnNote').value.trim();
+  document.getElementById('fnErr').style.display='none';
+  if(!name||!phone||!addr){ document.getElementById('fnErr').textContent='Please fill in your name, phone and delivery address.'; document.getElementById('fnErr').style.display='block'; return; }
+  var btn=document.getElementById('fnBtn'); btn.disabled=true; btn.textContent='Sending…';
+  try{
+    var r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:name, phone:phone, when:'Every Friday (Family Night subscription)',
+      note:('Delivery address: '+addr+(note?'. '+note:'')),
+      items:[{name:'Family Night subscription', size:'2 big pies: 1 savory + 1 sweet', qty:1, price:75}], total:75 })});
+    if(!r.ok) throw new Error('bad');
+    document.getElementById('fnForm').style.display='none';
+    document.getElementById('fnOk').style.display='block';
+  }catch(err){
+    document.getElementById('fnErr').textContent='Something went wrong — please try again in a minute.';
+    document.getElementById('fnErr').style.display='block';
+    btn.disabled=false; btn.textContent='Subscribe — $75/week';
+  }
+});
+</script>
+</body>
+</html>
