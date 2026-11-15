@@ -340,6 +340,9 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
 .fn-banner h2{margin:0; font-weight:400; font-size:clamp(24px,4.4vw,34px); color:#FFF6EC}
 .fn-banner p{margin:4px 0 0; font-size:16px; color:#FFEEDD; opacity:.92; max-width:620px}
 .fn-banner .btn{flex:none}
+.top-btns{grid-column:3; justify-self:end; display:flex; gap:8px; align-items:center}
+.btn-outline{border:1.5px solid var(--butter); color:var(--butter); background:transparent}
+.btn-outline:hover{background:rgba(240,203,129,.14)}
 </style>
 
 </head>
@@ -351,11 +354,14 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     <div class="menu-row">
       <nav class="nav" aria-label="Main">
         <a href="#pies">Pies</a>
-        <a href="subscription.html">Family Night</a>
+        <a href="subscription.html">Pie Club</a>
         <a href="#story">Our Story</a>
         <a href="#find-us">Find Us</a>
       </nav>
-      <a class="btn btn-butter btn-small" href="#pies">Preorder</a>
+      <div class="top-btns">
+        <a class="btn btn-outline btn-small" href="subscription.html">Pie Club</a>
+        <a class="btn btn-butter btn-small" href="#pies">Preorder</a>
+      </div>
     </div>
   </div>
 </header>
@@ -857,10 +863,10 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
   <section class="fn-banner">
     <div class="wrap fn-banner-in">
       <div>
-        <h2>Friday Family Night</h2>
+        <h2>Pie Club</h2>
         <p>Two big pies every Friday — one savory, one sweet. Baked in the morning, at your door by dinner. $75/week · pause anytime.</p>
       </div>
-      <a class="btn btn-butter" href="subscription.html">How it works</a>
+      <a class="btn btn-butter" href="subscription.html">Join the club</a>
     </div>
   </section>
 
@@ -912,7 +918,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
         <h4><span class="sr-only">Explore</span><span class="deco" aria-hidden="true">Ехрlоrе</span></h4>
         <ul class="footer-links">
           <li><a href="#pies">Our pies</a></li>
-          <li><a href="subscription.html">Family Night</a></li>
+          <li><a href="subscription.html">Pie Club</a></li>
           <li><a href="#story">Our story</a></li>
           <li><a href="#pies">Preorder</a></li>
         </ul>
