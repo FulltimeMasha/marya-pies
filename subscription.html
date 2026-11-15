@@ -71,6 +71,7 @@ a{color:inherit}
 .fn-form textarea{grid-column:1/-1}
 .fn-form button{grid-column:1/-1; justify-self:center; min-width:min(320px,100%)}
 .fn-ok{display:none; text-align:center; font-size:18px; color:var(--butter); padding:10px 0 2px}
+.fn-note{text-align:center; color:#FFEEDD; opacity:.85; font-size:14.5px; margin:14px auto 0; max-width:520px}
 .fn-faq{max-width:760px; margin:0 auto 10px}
 .fn-faq div{border-top:1px solid var(--line); padding:14px 4px}
 .fn-faq b{color:var(--cherry); font-size:16.5px}
@@ -78,7 +79,7 @@ a{color:inherit}
 .fn-close{text-align:center; font-size:19px; color:var(--cherry); margin:36px 0 8px}
 footer{background:var(--cherry-deep); color:#FFEEDD; padding:30px 0; margin-top:44px}
 .footer-in{display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap}
-footer img{width:52px; height:52px; border-radius:50%}
+footer img{width:54px; height:auto}
 footer a{color:var(--butter); text-decoration:none; font-weight:700}
 </style>
 </head>
@@ -101,7 +102,7 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
     <span class="fn-eyebrow">Marya Pies · The club</span>
     <h1>Pie Club</h1>
     <p class="lead">We sell Friday — the night the whole family is home.</p>
-    <p class="sub">Every Friday, two big pies arrive at your door: one savory, one sweet. Baked that same morning. No cooking, no pile of dishes — just everyone at the table, and the evening is yours.</p>
+    <p class="sub">Every Friday, two big pies arrive at your door: one savory, one sweet. Baked that same morning. No cooking, no pile of dishes — just everyone at the table, and the evening is yours. We're still getting ready to open — pre-registration is open now, and the first members get their Fridays first.</p>
     <div class="fn-price">
       <span><b>$75</b> / week</span>
       <span><b>$300</b> / month · 4 Fridays</span>
@@ -125,14 +126,14 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
 
     <h2 class="fn-h">How it works</h2>
     <div class="fn-steps">
-      <div class="fn-step"><span class="n">1</span><h3>You subscribe</h3><p>Fill in the form below. We call you back to confirm the details — no prepayment for the month, you pay week by week.</p></div>
+      <div class="fn-step"><span class="n">1</span><h3>You pre-register</h3><p>Fill in the form below — no payment now. As soon as we're ready to bake, we call you to confirm your first box.</p></div>
       <div class="fn-step"><span class="n">2</span><h3>We bake Friday morning</h3><p>Your two pies are baked fresh on Friday — never frozen, never yesterday's.</p></div>
       <div class="fn-step"><span class="n">3</span><h3>Friday, at your door</h3><p>Delivery Friday afternoon across the Triangle. Dinner is done; the family night begins.</p></div>
     </div>
 
     <div class="fn-form" id="subscribe">
       <h2>Join the Pie Club</h2>
-      <p class="fp">$75 per week · first box this Friday · pause anytime</p>
+      <p class="fp">$75 per week · pause anytime · pre-registration — no payment now</p>
       <form id="fnForm">
         <input id="fnName" placeholder="Your name *" autocomplete="name" />
         <input id="fnPhone" type="tel" placeholder="Phone number *" autocomplete="tel" />
@@ -140,7 +141,8 @@ footer a{color:var(--butter); text-decoration:none; font-weight:700}
         <textarea id="fnNote" rows="2" placeholder="Allergies, flavors you love or don't — tell us"></textarea>
         <button class="btn btn-butter" type="submit" id="fnBtn">Join — $75/week</button>
       </form>
-      <div class="fn-ok" id="fnOk">Thank you! Welcome to the Pie Club — Marya will call you to confirm your first Friday. 🥧</div>
+      <p class="fn-note">We're preparing to open. Join the list now — the moment we're ready to start baking, we'll contact you to confirm your order.</p>
+      <div class="fn-ok" id="fnOk">Thank you! You're on the Pie Club list. We're getting ready to open — as soon as we start baking, we'll call you to confirm your first box. 🥧</div>
       <div class="fn-ok" id="fnErr" style="color:#FFB3A7">Something went wrong — please try again in a minute.</div>
     </div>
 
