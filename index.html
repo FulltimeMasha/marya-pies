@@ -169,6 +169,23 @@ a{color:inherit}
 .section-tag{font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cranberry); background:#FBE3D3; border:1px solid #F3C9AE; padding:8px 12px; border-radius:999px; white-space:nowrap}
 .cards{display:grid; gap:20px}
 @media(min-width:820px){ .cards{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:819px){
+  .cards{grid-template-columns:repeat(2,1fr); gap:12px}
+  .card{border-radius:18px}
+  .card-body{padding:12px 12px 14px}
+  .card-top{flex-direction:column; gap:3px}
+  .card h3{font-size:21px}
+  .price{flex-direction:column; text-align:left; font-size:12.5px}
+  .price b{font-size:16px}
+  .card p{font-size:12.5px; line-height:1.5; margin-top:8px}
+  .card-foot{margin-top:12px; padding-top:10px}
+  .card-note{font-size:10.5px; line-height:1.4}
+  .buy{gap:8px; margin-top:10px}
+  .sizes{gap:5px; flex-wrap:wrap}
+  .sz{padding:5px 8px; font-size:11px; border-width:1.5px}
+  .card .btn-small{padding:8px 12px; font-size:12.5px}
+  .section-tag{white-space:normal; text-align:center; line-height:1.5}
+}
 .card{
   background:var(--cream-2); border:1px solid var(--line); border-radius:24px; overflow:hidden;
   box-shadow:var(--shadow-card); display:flex; flex-direction:column;
