@@ -92,7 +92,8 @@ FN_CSS = """
 
 # клубные блоки из текущей страницы (между </section> hero и </main>) — вырезаем по маркерам из old_sub
 def grab(start, end):
-    return old_sub[old_sub.index(start):old_sub.index(end)]
+    s = old_sub.index(start)
+    return old_sub[s:old_sub.index(end, s)]
 
 hero_block = grab('<section class="fn-hero wrap">', '</section>') + '</section>'
 # в hero_block убираем старую плашку-eyebrow (заставку добавили выше)
