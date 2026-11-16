@@ -49,6 +49,8 @@ FN_CSS = """
 .pk-x{background:none; border:none; font-size:30px; line-height:1; color:var(--cherry); cursor:pointer; padding:2px 8px}
 .pk-overlay button{grid-column:auto; min-width:0}
 .pk-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.pk-grid[hidden]{display:none}
+.pk-detail[hidden]{display:none}
 .pk-item{background:#FFFDF8; border:1.5px solid var(--line); border-radius:18px; padding:14px 10px 12px; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:3px; width:100%}
 .pk-item img{width:86px; height:86px; border-radius:50%; object-fit:cover; margin-bottom:5px}
 .pk-item .pk-n{font-size:20px; color:var(--cherry); line-height:1.1}
