@@ -26,12 +26,42 @@ FN_CSS = """
 .fn-price{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:26px 0 6px}
 .fn-price span{background:var(--cream-2); border:1px solid var(--line); border-radius:999px; padding:9px 18px; font-size:15.5px; box-shadow:var(--shadow-card)}
 .fn-price b{color:var(--cranberry)}
-.fn-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin:34px 0}
-@media(max-width:820px){.fn-grid{grid-template-columns:1fr}}
+.fn-grid{display:grid; grid-template-columns:1fr; gap:18px; margin:34px auto; max-width:780px}
 .fn-card{background:var(--cream-2); border:1px solid var(--line); border-radius:20px; padding:24px 22px; box-shadow:var(--shadow-card)}
 .fn-card .ic{font-size:30px; margin-bottom:8px}
 .fn-card h3{margin:0 0 6px; font-size:21px; color:var(--cherry); font-weight:400}
 .fn-card p{margin:0; font-size:15.5px; color:var(--ink-soft)}
+.fn-boxes{max-width:980px; margin:4px auto 8px}
+.fn-boxes img{width:100%; height:auto; border-radius:18px; box-shadow:var(--shadow-card); display:block}
+.fn-boxes-cap{text-align:center; color:var(--ink-soft); font-size:15px; margin:0 auto 8px}
+.fn-pick{display:flex; align-items:center; gap:10px; width:100%; border:1px solid rgba(240,203,129,.35); background:#FFF9F1; border-radius:14px; padding:8px 15px; font-size:16px; color:var(--ink); cursor:pointer; text-align:left}
+.fn-form .fn-pick{grid-column:auto; justify-self:stretch; min-width:0}
+.fn-pick img{width:38px; height:38px; border-radius:50%; object-fit:cover; display:none; flex:none}
+.fn-pick.chosen img{display:block}
+.fn-pick .fn-pick-label{flex:1; padding:5px 0}
+.fn-pick .fn-pick-chev{color:var(--cranberry); font-size:12px}
+.pk-overlay{position:fixed; inset:0; z-index:90; background:rgba(43,10,14,.55); display:flex; align-items:flex-end; justify-content:center}
+.pk-overlay[hidden]{display:none}
+.pk-sheet{background:var(--cream); width:min(600px,100%); max-height:88vh; overflow-y:auto; border-radius:24px 24px 0 0; padding:20px 18px 26px}
+@media(min-width:700px){.pk-overlay{align-items:center}.pk-sheet{border-radius:24px}}
+.pk-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
+.pk-head h3{margin:0; font-size:25px; color:var(--cherry); font-weight:400}
+.pk-x{background:none; border:none; font-size:30px; line-height:1; color:var(--cherry); cursor:pointer; padding:2px 8px}
+.pk-overlay button{grid-column:auto; min-width:0}
+.pk-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.pk-item{background:#FFFDF8; border:1.5px solid var(--line); border-radius:18px; padding:14px 10px 12px; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:3px; width:100%}
+.pk-item img{width:86px; height:86px; border-radius:50%; object-fit:cover; margin-bottom:5px}
+.pk-item .pk-n{font-size:20px; color:var(--cherry); line-height:1.1}
+.pk-item .pk-d{font-size:12px; color:var(--ink-soft); line-height:1.35}
+.pk-detail{text-align:center}
+.pk-detail img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:18px}
+.pk-detail h4{font-weight:400; font-size:33px; color:var(--cranberry); margin:12px 0 4px}
+.pk-desc{color:var(--ink); margin:0 0 8px; font-size:16px}
+.pk-ing{font-size:13.5px; color:var(--ink-soft); margin:0 0 2px}
+.pk-all{font-size:12.5px; color:var(--ink-soft); margin:0 0 16px}
+.pk-actions{display:flex; gap:10px; justify-content:center}
+.pk-back{background:none; border:1.5px solid var(--cherry); color:var(--cherry); border-radius:999px; padding:12px 22px; font-size:15.5px; cursor:pointer}
+.pk-choose{background:var(--butter); border:none; color:var(--cherry-deep); border-radius:999px; padding:12px 24px; font-size:15.5px; font-weight:700; cursor:pointer}
 .fn-steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:10px 0 34px}
 @media(max-width:820px){.fn-steps{grid-template-columns:1fr}}
 .fn-step{text-align:center; padding:10px}
@@ -44,7 +74,7 @@ FN_CSS = """
 .fn-form .fp{text-align:center; color:#FFEEDD; opacity:.9; margin:0 0 20px; font-size:16px}
 .fn-form form{display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:640px; margin:0 auto}
 @media(max-width:640px){.fn-form form{grid-template-columns:1fr}}
-.fn-form input,.fn-form textarea{width:100%; border:1px solid rgba(240,203,129,.35); background:#FFF9F1; border-radius:14px; padding:13px 15px; font-size:16px; color:var(--ink)}
+.fn-form input,.fn-form textarea,.fn-form select{width:100%; border:1px solid rgba(240,203,129,.35); background:#FFF9F1; border-radius:14px; padding:13px 15px; font-size:16px; color:var(--ink)}
 .fn-form textarea{grid-column:1/-1}
 .fn-form button{grid-column:1/-1; justify-self:center; min-width:min(320px,100%)}
 .fn-ok{display:none; text-align:center; font-size:18px; color:var(--butter); padding:10px 0 2px}
@@ -67,11 +97,11 @@ def grab(start, end):
 hero_block = grab('<section class="fn-hero wrap">', '</section>') + '</section>'
 # в hero_block убираем старую плашку-eyebrow (заставку добавили выше)
 hero_block = re.sub(r'\s*<span class="fn-eyebrow">.*?</span>', '', hero_block)
-cards_block = grab('<div class="fn-grid">', '</div>\n\n    <h2 class="fn-h">How it works</h2>') + '</div>'
+cards_block = grab('<div class="fn-grid">', '</section>').rstrip()
 steps_block = grab('<h2 class="fn-h">How it works</h2>', '<div class="fn-form" id="subscribe">')
 form_block = grab('<div class="fn-form" id="subscribe">', '<h2 class="fn-h">Questions</h2>')
 faq_block = grab('<h2 class="fn-h">Questions</h2>', '<p class="fn-close">')
-faq_block += '<p class="fn-close">Happiness in the moment. Memories are forever.</p>\n    <p style="text-align:center; margin:0 0 10px"><a class="btn btn-cranberry" href="#pies">See all the pies</a></p>'
+faq_block += '<p class="fn-close">Happiness in the moment, and memories forever.</p>\n    <p style="text-align:center; margin:0 0 10px"><a class="btn btn-cranberry" href="#pies">See all the pies</a></p>'
 
 html = f"""<!doctype html>
 <html lang="en">
