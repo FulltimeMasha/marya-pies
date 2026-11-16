@@ -970,6 +970,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
     
     
     
+    
     <div class="fn-form" id="subscribe">
       <h2>Join the Pie Club</h2>
       <p class="fp">$75 per week · pause anytime · pre-registration — no payment now</p>
@@ -1004,6 +1005,7 @@ footer h4{font-family:"Monomakh",serif; font-weight:400; font-size:20px; margin:
       </div>
     </div>
 
+    
     
     
     
@@ -1115,7 +1117,7 @@ document.getElementById('fnForm').addEventListener('submit', async function(e){
     });
     return out;
   }
-  function showGrid(){ detail.hidden=true; grid.hidden=false; }
+  function showGrid(){ detail.hidden=true; detail.style.display='none'; grid.hidden=false; grid.style.display='grid'; }
   function openPicker(cat,inputId,b){
     target=document.getElementById(inputId); btn=b; choice=null;
     title.textContent = cat==='quiche' ? 'Choose your savory pie' : 'Choose your sweet pie';
@@ -1143,7 +1145,7 @@ document.getElementById('fnForm').addEventListener('submit', async function(e){
         pkIng.innerHTML=''; var bEl=document.createElement('b'); bEl.textContent='What\u2019s inside: ';
         pkIng.appendChild(bEl); pkIng.appendChild(document.createTextNode(p.ing));
         pkAll.textContent=p.all?('Contains: '+p.all):'';
-        grid.hidden=true; detail.hidden=false;
+        grid.hidden=true; grid.style.display='none'; detail.hidden=false; detail.style.display='block';
         overlay.querySelector('.pk-sheet').scrollTop=0;
       });
       grid.appendChild(el);
